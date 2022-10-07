@@ -55,7 +55,7 @@
               pointer-events: none;
           }
           #card p{
-              position: absolute;
+              position: fixed;
           }
           #start{
               width: 80px;
@@ -148,7 +148,7 @@
               font-size: 30px;
               padding-left: 10px;
               text-align: left;
-              position: absolute;
+              position: fixed;
               left: 50px;
               bottom: 15px;
               display: none;
@@ -358,17 +358,17 @@
     <h1 style="margin-top: 20px; display: none; opacity: 0;" id="beKontakt">Vykdoma...</h1>
     <h1 style="margin-top: 20px; display: none; opacity: 0;" id="pinIvesti">Įveskite PIN...</h1>
     <h1 style="margin-top: 20px; display: none; opacity: 0;" id="pabaiga">Įvykdyta.</h1>
-    <input type="text" id="inputName" placeholder="Įvesti parduotuvės pavadinimą..."><button style="position: absolute; top: 138px; right: 30px; width: 50px; height: 30px; border-radius: 0 0 15px 15px; border: none; box-shadow: 0 0 15px white; background-color: white; transition: 0.3s;" id="shopName" onclick="confirmShopName()">OK</button>
+    <input type="text" id="inputName" placeholder="Įvesti parduotuvės pavadinimą..."><button style="position: fixed; top: 138px; right: 30px; width: 50px; height: 30px; border-radius: 0 0 15px 15px; border: none; box-shadow: 0 0 15px white; background-color: white; transition: 0.3s;" id="shopName" onclick="confirmShopName()">OK</button>
     <p style="margin-top: 20px;">Created by Matas</p>
-    <div style="width: 100%; height: 100px; background-color: black; position: absolute; top: 80px; left: 0; opacity: 0; display: none;" id="nocontact" onclick="payContact()"><img src="contactless.png" alt="" width="100px"></div>
-    <div id="card" onclick="payNormal()"><p style="bottom: 40px; left: 15px;">1234 0000 5678 0987</p><p style="bottom: 15px; left: 15px;">Kortelės Savininkas</p><p style="bottom: 27px; right: 15px;">09/25</p><img src="contactless.png" alt="Conctactless" width="50px" style="top: 10px; right: 10px; position: absolute;" id="contactNe"><img src="card.png" alt="Card" width="80px" style="position: absolute; top: 0; left: 0; background-color: white; border-radius: 20px 0 25px 0;"><i class="fa-solid fa-arrow-left" style="top: 100px; font-size: 20px; left: 15px; position: absolute;"></i></div>
-    <div style="width: 100%; height: 100px; position: absolute; display: flex; justify-content: center; align-items: center; left: 0; top: -1000px" id="loading"><span class="loader"></span></div>
-    <hr style="border-color: white; position: absolute; left: 0; right: 0; top: 190px; opacity: 0;" id="hr">
-    <p style="position: absolute; left: 5%; top: 200px; opacity: 0; display: none;" id="pradeta">Transakcija pradėta.</p>
-    <h1 style="position: absolute; left: 5%; top: 230px; opacity: 0; display: none;" id="sumaI">Įveskite sumą...</h1>
-    <input type="number" id="suma" style="position: absolute; left: 5%; top: 275px; opacity: 0; display: none;" placeholder="Įvesti sumą...">
-    <p style="font-size: 20px; color: white; position: absolute; top: 200px; right: 150px; opacity: 0;" id="euro">€</p>
-    <div style="width: 100%; height: 20px; display: flex; justify-content: space-around; align-items: center; position: absolute; left: 0; bottom: -1px; display: none;" id="infoKontakt">
+    <div style="width: 100%; height: 100px; background-color: black; position: fixed; top: 80px; left: 0; opacity: 0; display: none;" id="nocontact" onclick="payContact()"><img src="contactless.png" alt="" width="100px"></div>
+    <div id="card" onclick="payNormal()"><p style="bottom: 40px; left: 15px;">1234 0000 5678 0987</p><p style="bottom: 15px; left: 15px;">Kortelės Savininkas</p><p style="bottom: 27px; right: 15px;">09/25</p><img src="contactless.png" alt="Conctactless" width="50px" style="top: 10px; right: 10px; position: fixed;" id="contactNe"><img src="card.png" alt="Card" width="80px" style="position: fixed; top: 0; left: 0; background-color: white; border-radius: 20px 0 25px 0;"><i class="fa-solid fa-arrow-left" style="top: 100px; font-size: 20px; left: 15px; position: fixed;"></i></div>
+    <div style="width: 100%; height: 100px; position: afixed; display: flex; justify-content: center; align-items: center; left: 0; top: -1000px" id="loading"><span class="loader"></span></div>
+    <hr style="border-color: white; position: fixed; left: 0; right: 0; top: 190px; opacity: 0;" id="hr">
+    <p style="position: fixed; left: 5%; top: 200px; opacity: 0; display: none;" id="pradeta">Transakcija pradėta.</p>
+    <h1 style="position: fixed; left: 5%; top: 230px; opacity: 0; display: none;" id="sumaI">Įveskite sumą...</h1>
+    <input type="number" id="suma" style="position: fixed; left: 5%; top: 275px; opacity: 0; display: none;" placeholder="Įvesti sumą...">
+    <p style="font-size: 20px; color: white; position: fixed; top: 200px; right: 150px; opacity: 0;" id="euro">€</p>
+    <div style="width: 100%; height: 20px; display: flex; justify-content: space-around; align-items: center; position: fixed; left: 0; bottom: -1px; display: none;" id="infoKontakt">
         <div style="width: 40px; height: 20px; background-color: yellowgreen; border-radius: 5px 5px 0 0; opacity: 0; transition: none;" id="1"></div>
         <div style="width: 40px; height: 20px; background-color: yellowgreen; border-radius: 5px 5px 0 0; opacity: 0; transition: none;" id="2"></div>
         <div style="width: 40px; height: 20px; background-color: yellowgreen; border-radius: 5px 5px 0 0; opacity: 0; transition: none;" id="3"></div>
@@ -494,8 +494,8 @@
         </div>
         <button onclick="key5()">0</button>
     </div>
-    <i class="fa-solid fa-coins" style="position: absolute; top: 40%; right: 20%; color: orange; opacity: 0; display: none; font-size: 200px; background-color: black; border-radius: 40px; padding: 10px;" id="money"></i>
-    <div style="width: 100%; height: 250px; background-color: black; position: absolute; left: 0; top: 300px; display: flex; justify-content: space-around; align-items: center; flex-direction: column; opacity: 0; display: none;" id="ok"><p style="font-size: 30px; color: green; background-color: darkseagreen; border: 5px solid green; width: 100px; height: 100px; border-radius: 100%; display: flex; justify-content: center; align-items: center;">OK</p><p>Apmokėjimas pavyko!</p></div>
+    <i class="fa-solid fa-coins" style="position: fixed; top: 40%; right: 20%; color: orange; opacity: 0; display: none; font-size: 200px; background-color: black; border-radius: 40px; padding: 10px;" id="money"></i>
+    <div style="width: 100%; height: 250px; background-color: black; position: fixed; left: 0; top: 300px; display: flex; justify-content: space-around; align-items: center; flex-direction: column; opacity: 0; display: none;" id="ok"><p style="font-size: 30px; color: green; background-color: darkseagreen; border: 5px solid green; width: 100px; height: 100px; border-radius: 100%; display: flex; justify-content: center; align-items: center;">OK</p><p>Apmokėjimas pavyko!</p></div>
     <button id="start" onclick="startTransaction()">O</button>
     <button id="start2" onclick="confirmAmount()">O</button>
     <button id="start3" onclick="resetContact()">O</button>
@@ -557,6 +557,7 @@ function cancelTransaction() {
             document.getElementById("start").style.pointerEvents = "all";
             document.getElementById("cancel").style.pointerEvents = "none";
             document.getElementById("click").play();
+            document.getElementById("card").style.pointerEvents = "none";
             setTimeout(() => {  document.getElementById("cancel").style.boxShadow = "0 0 15px red"; }, 300);
             setTimeout(() => {  document.getElementById("start").style.display = "block"; }, 6000);
             setTimeout(() => {  document.getElementById("start2").style.display = "none"; }, 6000);
@@ -633,6 +634,7 @@ function cancelPay() {
             document.getElementById("cancel2").style.boxShadow = "none";
             document.getElementById("cancel2").style.pointerEvents = "none";
             document.getElementById("click").play();
+            document.getElementById("card").style.pointerEvents = "none";
             setTimeout(() => {  document.getElementById("cancel2").style.boxShadow = "0 0 15px red"; }, 300);
             setTimeout(() => {  document.getElementById("card").style.animation = "none"; }, 1000);
             setTimeout(() => {  document.getElementById("card").style.transform = "rotate(0)"; }, 1000);
@@ -674,6 +676,7 @@ function cancelPay() {
             document.getElementById("nocontact").style.pointerEvents = "none";
             document.getElementById("card").style.marginTop = "170px";
             document.getElementById("idetiKort").style.opacity = "0";
+            document.getElementById("click").play();
             setTimeout(() => {  document.getElementById("idetiKort").style.display = "none"; }, 300);
             setTimeout(() => {  document.getElementById("pinIvesti").style.opacity = "1"; }, 350);
             setTimeout(() => {  document.getElementById("pinIvesti").style.display = "block"; }, 300);
