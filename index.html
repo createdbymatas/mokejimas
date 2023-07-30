@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card payment</title>
+    <title>&copy; FINBONK</title>
+    <link rel="shortcut icon" type="image/jpg" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -30,7 +31,7 @@
           #screen{
             width: 90%;
             height: 300px;
-            margin-top: 15px;
+            margin-top: 5px;
             border-radius: 25px;
             background-color: darkslategrey;
             position: relative;
@@ -40,12 +41,12 @@
           }
           #keyboard{
               width: 90%;
-              height: 300px;
+              height: 280px;
               display: flex;
               justify-content: space-around;
               align-items: center;
               flex-direction: column;
-              margin-top: 15px;
+              margin-top: 5px;
           }
           .number{
               width: 100px;
@@ -104,9 +105,15 @@
     <audio src="repeat.mp3" id="repeat"></audio>
     
     <h1 id="logo" style="color: darkslategrey; transition: 0.3s; animation: blink 5s linear infinite;" onclick="run()">&copy; FINBONK</h1>
+    <div style="width: 100%; height: 10px; display: flex; justify-content: space-around; align-items: center; padding-left: 20px; padding-right: 20px; margin-top: 10px;">
+        <div style="width: 25px; height: 13px; background-color: darkslategrey; border-radius: 3px; transition: none;" id="zalias1"></div>
+        <div style="width: 25px; height: 13px; background-color: darkslategrey; border-radius: 3px; transition: none;" id="zalias2"></div>
+        <div style="width: 25px; height: 13px; background-color: darkslategrey; border-radius: 3px; transition: none;" id="zalias3"></div>
+        <div style="width: 25px; height: 13px; background-color: darkslategrey; border-radius: 3px; transition: none;" id="zalias4"></div>
+    </div>
     <div id="screen">
         <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="created"><span id="raide1" style="transition: 0.3s;">C</span><span id="raide2" style="transition: 0.3s;">r</span><span id="raide3" style="transition: 0.3s;">e</span><span id="raide4" style="transition: 0.3s;">a</span><span id="raide5" style="transition: 0.3s;">t</span><span id="raide6" style="transition: 0.3s;">e</span><span id="raide7" style="transition: 0.3s;">d</span> <span id="raide8" style="transition: 0.3s;">b</span><span id="raide9" style="transition: 0.3s;">y</span> <span id="raide10" style="transition: 0.3s;">M</span><span id="raide11" style="transition: 0.3s;">a</span><span id="raide12" style="transition: 0.3s;">t</span><span id="raide13" style="transition: 0.3s;">a</span><span id="raide14" style="transition: 0.3s;">s</span></p>
-        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="startAdvice">To start transaction, press <i class="fa-solid fa-check"></i></p>
+        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="startAdvice">To start transaction, press <i class="fa-solid fa-check" style="color: green;"></i></p>
         <i class="fa-regular fa-hourglass-half" style="position: absolute; font-size: 70px; color: black; opacity: 0; margin-top: -30px;" id="loading"></i>
         <p style="position: absolute; font-size: 22px; color: black; opacity: 0; margin-top: 90px; text-transform: none;" id="dirba">Busy</p>
         <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="ready">Ready</p>
@@ -115,12 +122,12 @@
         <div style="width: 50px; height: 20px; position: absolute; margin-top: 160px; margin-left: -80px; opacity: 0; z-index: 1; background-image: linear-gradient(white, transparent); transform: rotate(-90deg); transition: none;" id="input1shadow"></div>
         <div style="width: 50px; height: 20px; position: absolute; margin-top: 160px; margin-left: 80px; opacity: 0; z-index: 1; background-image: linear-gradient(white, transparent); transform: rotate(90deg); transition: none;" id="input2shadow"></div>
         <p style="font-size: 25px; position: absolute; color: black; margin-top: 135px; margin-left: 130px; z-index: 2; opacity: 0;" id="euro">&euro;</p>
-        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="amountRoundUp">Round up amount if it uses ,</p>
+        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="amountRoundUp">Round up amount if it needs ,</p>
         <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="insertCard">Insert card</p>
         <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="contactlessAvailable">Contactless available</p>
         <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="enterPin">Enter PIN</p>
         <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="attemptsRemaining">Attempts remaining: 3</p>
-        <input type="number" style="user-select: none; pointer-events: none; border: none; background-color: transparent; width: 42px; height: 50px; color: black; text-align: center; font-size: 25px; margin-top: 135px; opacity: 0; position: absolute; padding-top: 10px;" id="pinInput">
+        <input type="password" style="user-select: none; pointer-events: none; border: none; background-color: transparent; width: 42px; height: 50px; color: black; text-align: center; font-size: 50px; margin-top: 135px; opacity: 0; position: absolute; padding-top: 10px;" id="pinInput">
         <i class="fa-solid fa-signal" style="position: absolute; color: black; top: 15px; left: 15px; opacity: 0; font-size: 15px;" id="signal"></i>
         <i class="fa-solid fa-building-columns" style="position: absolute; color: black; top: 15px; left: 40px; opacity: 0; font-size: 15px;" id="bank"></i>
         <p style="position: absolute; color: black; top: 15px; left: 60px; opacity: 0; font-size: 15px;" id="connectedBank">FINBONK Lietuva</p>
@@ -129,27 +136,29 @@
     </div>
     <div id="keyboard">
         <div style="display: flex; justify-content: space-around; align-items: center; width: 100%;">
-            <div class="number" style="pointer-events: none;" id="1" onclick="vienas()">1<i class="fa-solid fa-voicemail" style="font-size: 15px; margin-left: 5px; margin-top: 5px; transition: 0.01s;"></i></div>
-            <div class="number" style="pointer-events: none;" id="2" onclick="du()">2<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">abc</span></div>
-            <div class="number" style="pointer-events: none;" id="3" onclick="trys()">3<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">def</span></div>
+            <div class="number" style="pointer-events: none;" id="1" onclick="vienas()">1<i class="fa-solid fa-voicemail" style="font-size: 15px; margin-left: 5px; margin-top: 5px; transition: 0.01s;"></i></div><div class="number" style="pointer-events: none; display: none;" id="1q" onclick="vienasQ()">1<i class="fa-solid fa-voicemail" style="font-size: 15px; margin-left: 5px; margin-top: 5px; transition: 0.01s;"></i></div>
+            <div class="number" style="pointer-events: none;" id="2" onclick="du()">2<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">abc</span></div><div class="number" style="pointer-events: none; display: none;" id="2q" onclick="duQ()">2<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">abc</span></div>
+            <div class="number" style="pointer-events: none;" id="3" onclick="trys()">3<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">def</span></div><div class="number" style="pointer-events: none; display: none;" id="3q" onclick="trysQ()">3<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">def</span></div>
         </div>
         <div style="display: flex; justify-content: space-around; align-items: center; width: 100%;">
-            <div class="number" style="pointer-events: none;" id="4" onclick="keturi()">4<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">ghi</span></div>
-            <div class="number" style="pointer-events: none;" id="5" onclick="penki()">5<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">jkl</span></div>
-            <div class="number" style="pointer-events: none;" id="6" onclick="sesi()">6<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">mon</span></div>
+            <div class="number" style="pointer-events: none;" id="4" onclick="keturi()">4<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">ghi</span></div><div class="number" style="pointer-events: none; display: none;" id="4q" onclick="keturiQ()">4<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">ghi</span></div>
+            <div class="number" style="pointer-events: none;" id="5" onclick="penki()">5<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">jkl</span></div><div class="number" style="pointer-events: none; display: none;" id="5q" onclick="penkiQ()">5<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">jkl</span></div>
+            <div class="number" style="pointer-events: none;" id="6" onclick="sesi()">6<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">mon</span></div><div class="number" style="pointer-events: none; display: none;" id="6q" onclick="sesiQ()">6<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">mon</span></div>
         </div>
         <div style="display: flex; justify-content: space-around; align-items: center; width: 100%;">
-            <div class="number" style="pointer-events: none;" id="7" onclick="septyni()">7<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">pqrs</span></div>
-            <div class="number" style="pointer-events: none;" id="8" onclick="astuoni()">8<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">tuv</span></div>
-            <div class="number" style="pointer-events: none;" id="9" onclick="devyni()">9<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">wxyz</span></div>
+            <div class="number" style="pointer-events: none;" id="7" onclick="septyni()">7<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">pqrs</span></div><div class="number" style="pointer-events: none; display: none;" id="7q" onclick="septyniQ()">7<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">pqrs</span></div>
+            <div class="number" style="pointer-events: none;" id="8" onclick="astuoni()">8<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">tuv</span></div><div class="number" style="pointer-events: none; display: none;" id="8q" onclick="astuoniQ()">8<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">tuv</span></div>
+            <div class="number" style="pointer-events: none;" id="9" onclick="devyni()">9<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">wxyz</span></div><div class="number" style="pointer-events: none; display: none;" id="9q" onclick="devyniQ()">9<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">wxyz</span></div>
         </div>
         <div style="display: flex; justify-content: space-around; align-items: center; width: 100%;">
             <div class="number" style="pointer-events: none;" id="x" onclick="trinti()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i></div>
-            <div class="number" style="display: none; color: white; border-color: white;" id="x2" onclick="atsaukti()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i></div>
+            <div class="number" style="display: none; color: red; border-color: red;" id="x2" onclick="atsaukti()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i></div>
             <div class="number" style="display: none;" id="x3" onclick="atsauktiInsert()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i></div>
-            <div class="number" style="pointer-events: none;" id="0" onclick="nulis()">0<i class="fa-solid fa-plus" style="font-size: 15px; margin-left: 5px; margin-top: 2px; transition: 0.01s;"></i></div>
+            <div class="number" style="display: none;" id="x4" onclick="atsauktiMokejima()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i></div>
+            <div class="number" style="pointer-events: none;" id="0" onclick="nulis()">0<i class="fa-solid fa-plus" style="font-size: 15px; margin-left: 5px; margin-top: 2px; transition: 0.01s;"></i></div><div class="number" style="pointer-events: none; display: none;" id="0q" onclick="nulisQ()">0<i class="fa-solid fa-plus" style="font-size: 15px; margin-left: 5px; margin-top: 2px; transition: 0.01s;"></i></div>
             <div class="number" style="pointer-events: none;" id="check" onclick="startTransaction()"><i class="fa-solid fa-check" style="transition: 0.01s;"></i></div>
             <div class="number" style="pointer-events: none; display: none;" id="check2" onclick="openTransaction()"><i class="fa-solid fa-check" style="transition: 0.01s;"></i></div>
+            <div class="number" style="pointer-events: none; display: none;" id="check3"><i class="fa-solid fa-check" style="transition: 0.01s;"></i></div>
         </div>
         <input style="display: none;" id="taskas" value=".">
     </div>
@@ -160,12 +169,12 @@
             document.getElementById("logo").style.pointerEvents = "none";
             document.getElementById("logo").style.animation = "none";
             setTimeout(() => {  
-                document.getElementById("check").style.color = "white";
-                document.getElementById("check").style.borderColor = "white";
+                document.getElementById("check").style.color = "green";
+                document.getElementById("check").style.borderColor = "green";
                 document.getElementById("0").style.color = "white";
                 document.getElementById("0").style.borderColor = "white";
-                document.getElementById("x").style.color = "white";
-                document.getElementById("x").style.borderColor = "white";
+                document.getElementById("x").style.color = "red";
+                document.getElementById("x").style.borderColor = "red";
             }, 300);
             setTimeout(() => {  
                 document.getElementById("7").style.color = "white";
@@ -195,16 +204,44 @@
                 document.getElementById("screen").style.backgroundColor = "white";
             }, 1500);
             setTimeout(() => {  
-                document.getElementById("logo").style.color = "white";
+                document.getElementById("zalias1").style.backgroundColor = "yellowgreen";
+                document.getElementById("zalias2").style.backgroundColor = "yellowgreen";
+                document.getElementById("zalias3").style.backgroundColor = "yellowgreen";
+                document.getElementById("zalias4").style.backgroundColor = "yellowgreen";
             }, 1800);
             setTimeout(() => {  
+                document.getElementById("logo").style.color = "white";
+            }, 1900);
+            setTimeout(() => {  
                 document.getElementById("created").style.opacity = "1";
-            }, 2000);
+            }, 2100);
+            setTimeout(() => {  
+                document.getElementById("zalias1").style.backgroundColor = "darkslategrey";
+                document.getElementById("zalias2").style.backgroundColor = "darkslategrey";
+                document.getElementById("zalias3").style.backgroundColor = "darkslategrey";
+                document.getElementById("zalias4").style.backgroundColor = "darkslategrey";
+            }, 2300);
+            setTimeout(() => {  
+                document.getElementById("zalias1").style.backgroundColor = "yellowgreen";
+                document.getElementById("zalias2").style.backgroundColor = "yellowgreen";
+                document.getElementById("zalias3").style.backgroundColor = "yellowgreen";
+                document.getElementById("zalias4").style.backgroundColor = "yellowgreen";
+            }, 2800);
+            setTimeout(() => {  
+                document.getElementById("zalias1").style.backgroundColor = "darkslategrey";
+                document.getElementById("zalias2").style.backgroundColor = "darkslategrey";
+                document.getElementById("zalias3").style.backgroundColor = "darkslategrey";
+                document.getElementById("zalias4").style.backgroundColor = "darkslategrey";
+            }, 3300);
             setTimeout(() => {
                 document.getElementById("raide14").style.opacity = "0";
             }, 3700);
             setTimeout(() => {
                 document.getElementById("raide13").style.opacity = "0";
+                document.getElementById("zalias1").style.backgroundColor = "yellowgreen";
+                document.getElementById("zalias2").style.backgroundColor = "yellowgreen";
+                document.getElementById("zalias3").style.backgroundColor = "yellowgreen";
+                document.getElementById("zalias4").style.backgroundColor = "yellowgreen";
             }, 3800);
             setTimeout(() => {
                 document.getElementById("raide12").style.opacity = "0";
@@ -219,7 +256,11 @@
                 document.getElementById("raide9").style.opacity = "0";
             }, 4200);
             setTimeout(() => {
-            document.getElementById("raide8").style.opacity = "0";
+                document.getElementById("raide8").style.opacity = "0";
+                document.getElementById("zalias1").style.backgroundColor = "darkslategrey";
+                document.getElementById("zalias2").style.backgroundColor = "darkslategrey";
+                document.getElementById("zalias3").style.backgroundColor = "darkslategrey";
+                document.getElementById("zalias4").style.backgroundColor = "darkslategrey";
             }, 4300);
             setTimeout(() => {
                 document.getElementById("raide7").style.opacity = "0";
@@ -235,6 +276,10 @@
             }, 4700);
             setTimeout(() => {
                 document.getElementById("raide3").style.opacity = "0";
+                document.getElementById("zalias1").style.backgroundColor = "yellowgreen";
+                document.getElementById("zalias2").style.backgroundColor = "yellowgreen";
+                document.getElementById("zalias3").style.backgroundColor = "yellowgreen";
+                document.getElementById("zalias4").style.backgroundColor = "yellowgreen";
             }, 4800);
             setTimeout(() => {
                 document.getElementById("raide2").style.opacity = "0";
@@ -270,6 +315,10 @@
                 document.getElementById("0").style.borderColor = "darkslategrey";
                 document.getElementById("check").style.color = "darkslategrey";
                 document.getElementById("check").style.borderColor = "darkslategrey";
+                document.getElementById("zalias1").style.backgroundColor = "darkslategrey";
+                document.getElementById("zalias2").style.backgroundColor = "darkslategrey";
+                document.getElementById("zalias3").style.backgroundColor = "darkslategrey";
+                document.getElementById("zalias4").style.backgroundColor = "darkslategrey";
             }, 5300);
             setTimeout(() => {  
                 document.getElementById("signal").style.opacity = "1";
@@ -369,8 +418,8 @@
             setTimeout(() => {
                 document.getElementById("startAdvice").style.opacity = "1";
                 document.getElementById("check").style.pointerEvents = "all";
-                document.getElementById("check").style.color = "white";
-                document.getElementById("check").style.borderColor = "white";
+                document.getElementById("check").style.color = "green";
+                document.getElementById("check").style.borderColor = "green";
             }, 28000);
         }
 
@@ -383,7 +432,7 @@
             document.getElementById("check").style.transition = "none";
             document.getElementById("check").style.pointerEvents = "none";
             setTimeout(() => {  
-                document.getElementById("check").style.borderColor = "white";
+                document.getElementById("check").style.borderColor = "green";
                 document.getElementById("check").style.transition = "0.3s";
                 document.getElementById("startAdvice").style.opacity = "0";
                 document.getElementById("ready").style.opacity = "0";
@@ -423,8 +472,8 @@
                 document.getElementById("8").style.borderColor = "white";
                 document.getElementById("9").style.color = "white";
                 document.getElementById("9").style.borderColor = "white";
-                document.getElementById("x").style.color = "white";
-                document.getElementById("x").style.borderColor = "white";
+                document.getElementById("x").style.color = "red";
+                document.getElementById("x").style.borderColor = "red";
                 document.getElementById("0").style.color = "white";
                 document.getElementById("0").style.borderColor = "white";
             }, 4400);
@@ -442,8 +491,8 @@
                 document.getElementById("0").style.pointerEvents = "all";
                 document.getElementById("x").style.display = "none";
                 document.getElementById("x2").style.display = "flex";
-                document.getElementById("x2").style.borderColor = "white";
-                document.getElementById("x2").style.color = "white";
+                document.getElementById("x2").style.borderColor = "red";
+                document.getElementById("x2").style.color = "red";
                 document.getElementById("check").style.pointerEvents = "all";
                 document.getElementById("check").style.display = "none";
                 document.getElementById("check2").style.display = "flex";
@@ -470,7 +519,7 @@
             document.getElementById("x").style.pointerEvents = "none";
             document.getElementById("x2").style.display = "none";
             setTimeout(() => {  
-                document.getElementById("check2").style.borderColor = "white";
+                document.getElementById("check2").style.borderColor = "green";
                 document.getElementById("check2").style.transition = "0.3s";
                 document.getElementById("amountRoundUp").style.opacity = "0";
                 document.getElementById("amount").style.opacity = "0";
@@ -529,8 +578,8 @@
                 document.getElementById("contactlessAvailable").style.opacity = "1";
                 document.getElementById("insertCardComplete").style.display = "block";
                 document.getElementById("repeat").play();
-                document.getElementById("x3").style.color = "white";
-                document.getElementById("x3").style.borderColor = "white";
+                document.getElementById("x3").style.color = "red";
+                document.getElementById("x3").style.borderColor = "red";
             }, 6400);
         }
         var audio = document.getElementById("repeat");
@@ -555,7 +604,7 @@
             document.getElementById("x3").style.pointerEvents = "none";
             document.getElementById("x").style.pointerEvents = "none";
             setTimeout(() => {  
-                document.getElementById("x3").style.borderColor = "white";
+                document.getElementById("x3").style.borderColor = "red";
                 document.getElementById("x3").style.transition = "0.3s";
                 document.getElementById("contactlessAvailable").style.opacity = "0";
                 document.getElementById("insertCard").style.opacity = "0";
@@ -606,68 +655,127 @@
             setTimeout(() => {
                 document.getElementById("startAdvice").style.opacity = "1";
                 document.getElementById("check").style.pointerEvents = "all";
-                document.getElementById("check").style.borderColor = "white";
-                document.getElementById("check").style.color = "white";
+                document.getElementById("check").style.borderColor = "green";
+                document.getElementById("check").style.color = "green";
             }, 4400);
         }
-        // function cardInserted() {
-        //     document.getElementById("insertCardComplete").style.display = "none";
-        //     document.getElementById("repeat").pause();
-        //     document.getElementById('repeat').currentTime = 0;
-        //     setTimeout(() => {  
-        //         document.getElementById("insertCard").style.opacity = "0";
-        //         document.getElementById("contactlessAvailable").style.opacity = "0";
-        //         document.getElementById("amountInput").style.opacity = "0";
-        //         document.getElementById("input1shadow").style.opacity = "0";
-        //         document.getElementById("input2shadow").style.opacity = "0";
-        //         document.getElementById("euro").style.opacity = "0";
-        //         document.getElementById("repeat").pause();
-        //         document.getElementById('repeat').currentTime = 0;
-        //     }, 100);
-        //     setTimeout(() => {  
-        //         document.getElementById("repeat").pause();
-        //         document.getElementById('repeat').currentTime = 0;
-        //     }, 200);
-        //     setTimeout(() => {  
-        //         document.getElementById("dirba").style.opacity = "1";
-        //         document.getElementById("loading").style.opacity = "1";
-        //     }, 250);
-        //     setTimeout(() => {  
-        //         document.getElementById("repeat").pause();
-        //         document.getElementById('repeat').currentTime = 0;
-        //     }, 300);
-        //     setTimeout(() => {  
-        //         document.getElementById("repeat").pause();
-        //         document.getElementById('repeat').currentTime = 0;
-        //     }, 400);
-        //     setTimeout(() => {  
-        //         document.getElementById("repeat").pause();
-        //         document.getElementById('repeat').currentTime = 0;
-        //     }, 500);
-        //     setTimeout(() => {  
-        //         document.getElementById("repeat").pause();
-        //         document.getElementById('repeat').currentTime = 0;
-        //     }, 600);
-        //     setTimeout(() => {  
-        //         document.getElementById("dirba").style.opacity = "0";
-        //         document.getElementById("loading").style.opacity = "0";
-        //     }, 5250);
-        //     setTimeout(() => {  
-        //         document.getElementById("enterPin").style.opacity = "1";
-        //         document.getElementById("pinInputa").style.opacity = "1";
-        //     }, 5400);
-        //     setTimeout(() => {  
-        //         document.getElementById("attemptsRemaining").style.opacity = "1";
-        //     }, 6400);
-        // }
+        function cardInserted() {
+            document.getElementById("insertCardComplete").style.display = "none";
+            document.getElementById("repeat").pause();
+            document.getElementById('repeat').currentTime = 0;
+            document.getElementById("x3").style.borderColor = "darkslategrey";
+            document.getElementById("x3").style.color = "darkslategrey";
+            setTimeout(() => {  
+                document.getElementById("insertCard").style.opacity = "0";
+                document.getElementById("contactlessAvailable").style.opacity = "0";
+                document.getElementById("amountInput").style.opacity = "0";
+                document.getElementById("input1shadow").style.opacity = "0";
+                document.getElementById("input2shadow").style.opacity = "0";
+                document.getElementById("euro").style.opacity = "0";
+                document.getElementById("repeat").pause();
+                document.getElementById('repeat').currentTime = 0;
+            }, 100);
+            setTimeout(() => {  
+                document.getElementById("repeat").pause();
+                document.getElementById('repeat').currentTime = 0;
+            }, 200);
+            setTimeout(() => {  
+                document.getElementById("dirba").style.opacity = "1";
+                document.getElementById("loading").style.opacity = "1";
+            }, 250);
+            setTimeout(() => {  
+                document.getElementById("repeat").pause();
+                document.getElementById('repeat').currentTime = 0;
+                document.getElementById("x3").style.display = "none";
+                document.getElementById("x4").style.display = "flex";
+                document.getElementById("check2").style.display = "none";
+                document.getElementById("check3").style.display = "flex";
+                document.getElementById("1").style.display = "none";
+                document.getElementById("1q").style.display = "flex";
+                document.getElementById("2").style.display = "none";
+                document.getElementById("2q").style.display = "flex";
+                document.getElementById("3").style.display = "none";
+                document.getElementById("3q").style.display = "flex";
+                document.getElementById("4").style.display = "none";
+                document.getElementById("4q").style.display = "flex";
+                document.getElementById("5").style.display = "none";
+                document.getElementById("5q").style.display = "flex";
+                document.getElementById("6").style.display = "none";
+                document.getElementById("6q").style.display = "flex";
+                document.getElementById("7").style.display = "none";
+                document.getElementById("7q").style.display = "flex";
+                document.getElementById("8").style.display = "none";
+                document.getElementById("8q").style.display = "flex";
+                document.getElementById("9").style.display = "none";
+                document.getElementById("9q").style.display = "flex";
+                document.getElementById("0").style.display = "none";
+                document.getElementById("0q").style.display = "flex";
+            }, 300);
+            setTimeout(() => {  
+                document.getElementById("repeat").pause();
+                document.getElementById('repeat').currentTime = 0;
+                document.getElementById("amountInput").value = '';
+            }, 400);
+            setTimeout(() => {  
+                document.getElementById("repeat").pause();
+                document.getElementById('repeat').currentTime = 0;
+            }, 500);
+            setTimeout(() => {  
+                document.getElementById("repeat").pause();
+                document.getElementById('repeat').currentTime = 0;
+            }, 600);
+            setTimeout(() => {  
+                document.getElementById("dirba").style.opacity = "0";
+                document.getElementById("loading").style.opacity = "0";
+            }, 5250);
+            setTimeout(() => {  
+                document.getElementById("enterPin").style.opacity = "1";
+                document.getElementById("pinInput").style.opacity = "1";
+            }, 5400);
+            setTimeout(() => {  
+                document.getElementById("attemptsRemaining").style.opacity = "1";
+                document.getElementById("x4").style.borderColor = "red";
+                document.getElementById("x4").style.color = "red";
+                document.getElementById("1q").style.borderColor = "white";
+                document.getElementById("1q").style.color = "white";
+                document.getElementById("1q").style.pointerEvents = "all";
+                document.getElementById("2q").style.borderColor = "white";
+                document.getElementById("2q").style.color = "white";
+                document.getElementById("2q").style.pointerEvents = "all";
+                document.getElementById("3q").style.borderColor = "white";
+                document.getElementById("3q").style.color = "white";
+                document.getElementById("3q").style.pointerEvents = "all";
+                document.getElementById("4q").style.borderColor = "white";
+                document.getElementById("4q").style.color = "white";
+                document.getElementById("4q").style.pointerEvents = "all";
+                document.getElementById("5q").style.borderColor = "white";
+                document.getElementById("5q").style.color = "white";
+                document.getElementById("5q").style.pointerEvents = "all";
+                document.getElementById("6q").style.borderColor = "white";
+                document.getElementById("6q").style.color = "white";
+                document.getElementById("6q").style.pointerEvents = "all";
+                document.getElementById("7q").style.borderColor = "white";
+                document.getElementById("7q").style.color = "white";
+                document.getElementById("7q").style.pointerEvents = "all";
+                document.getElementById("8q").style.borderColor = "white";
+                document.getElementById("8q").style.color = "white";
+                document.getElementById("8q").style.pointerEvents = "all";
+                document.getElementById("9q").style.borderColor = "white";
+                document.getElementById("9q").style.color = "white";
+                document.getElementById("9q").style.pointerEvents = "all";
+                document.getElementById("0q").style.borderColor = "white";
+                document.getElementById("0q").style.color = "white";
+                document.getElementById("0q").style.pointerEvents = "all";
+            }, 6400);
+        }
         function vienas() {
             document.getElementById("click").play();
             document.getElementById('click').currentTime = 0;
             document.getElementById("x").style.display = "flex";
             document.getElementById("x").style.pointerEvents = "all";
             document.getElementById("check2").style.pointerEvents = "all";
-            document.getElementById("check2").style.color = "white";
-            document.getElementById("check2").style.borderColor = "white";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
             document.getElementById("x2").style.display = "none";
             document.getElementById("1").style.borderColor = "darkslategrey";
             document.getElementById("1").style.transition = "none";
@@ -683,8 +791,8 @@
             document.getElementById("x").style.display = "flex";
             document.getElementById("x").style.pointerEvents = "all";
             document.getElementById("check2").style.pointerEvents = "all";
-            document.getElementById("check2").style.color = "white";
-            document.getElementById("check2").style.borderColor = "white";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
             document.getElementById("x2").style.display = "none";
             document.getElementById("2").style.borderColor = "darkslategrey";
             document.getElementById("2").style.transition = "none";
@@ -700,8 +808,8 @@
             document.getElementById("x").style.display = "flex";
             document.getElementById("x").style.pointerEvents = "all";
             document.getElementById("check2").style.pointerEvents = "all";
-            document.getElementById("check2").style.color = "white";
-            document.getElementById("check2").style.borderColor = "white";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
             document.getElementById("x2").style.display = "none";
             document.getElementById("3").style.borderColor = "darkslategrey";
             document.getElementById("3").style.transition = "none";
@@ -717,8 +825,8 @@
             document.getElementById("x").style.display = "flex";
             document.getElementById("x").style.pointerEvents = "all";
             document.getElementById("check2").style.pointerEvents = "all";
-            document.getElementById("check2").style.color = "white";
-            document.getElementById("check2").style.borderColor = "white";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
             document.getElementById("x2").style.display = "none";
             document.getElementById("4").style.borderColor = "darkslategrey";
             document.getElementById("4").style.transition = "none";
@@ -734,8 +842,8 @@
             document.getElementById("x").style.display = "flex";
             document.getElementById("x").style.pointerEvents = "all";
             document.getElementById("check2").style.pointerEvents = "all";
-            document.getElementById("check2").style.color = "white";
-            document.getElementById("check2").style.borderColor = "white";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
             document.getElementById("x2").style.display = "none";
             document.getElementById("5").style.borderColor = "darkslategrey";
             document.getElementById("5").style.transition = "none";
@@ -751,8 +859,8 @@
             document.getElementById("x").style.display = "flex";
             document.getElementById("x").style.pointerEvents = "all";
             document.getElementById("check2").style.pointerEvents = "all";
-            document.getElementById("check2").style.color = "white";
-            document.getElementById("check2").style.borderColor = "white";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
             document.getElementById("x2").style.display = "none";
             document.getElementById("6").style.borderColor = "darkslategrey";
             document.getElementById("6").style.transition = "none";
@@ -768,8 +876,8 @@
             document.getElementById("x").style.display = "flex";
             document.getElementById("x").style.pointerEvents = "all";
             document.getElementById("check2").style.pointerEvents = "all";
-            document.getElementById("check2").style.color = "white";
-            document.getElementById("check2").style.borderColor = "white";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
             document.getElementById("x2").style.display = "none";
             document.getElementById("7").style.borderColor = "darkslategrey";
             document.getElementById("7").style.transition = "none";
@@ -785,8 +893,8 @@
             document.getElementById("x").style.display = "flex";
             document.getElementById("x").style.pointerEvents = "all";
             document.getElementById("check2").style.pointerEvents = "all";
-            document.getElementById("check2").style.color = "white";
-            document.getElementById("check2").style.borderColor = "white";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
             document.getElementById("x2").style.display = "none";
             document.getElementById("8").style.borderColor = "darkslategrey";
             document.getElementById("8").style.transition = "none";
@@ -802,8 +910,8 @@
             document.getElementById("x").style.display = "flex";
             document.getElementById("x").style.pointerEvents = "all";
             document.getElementById("check2").style.pointerEvents = "all";
-            document.getElementById("check2").style.color = "white";
-            document.getElementById("check2").style.borderColor = "white";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
             document.getElementById("x2").style.display = "none";
             document.getElementById("9").style.borderColor = "darkslategrey";
             document.getElementById("9").style.transition = "none";
@@ -820,8 +928,8 @@
             document.getElementById("x").style.display = "flex";
             document.getElementById("x").style.pointerEvents = "all";
             document.getElementById("check2").style.pointerEvents = "all";
-            document.getElementById("check2").style.color = "white";
-            document.getElementById("check2").style.borderColor = "white";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
             document.getElementById("x2").style.display = "none";
             document.getElementById("0").style.borderColor = "darkslategrey";
             document.getElementById("0").style.transition = "none";
@@ -842,7 +950,7 @@
             document.getElementById("check2").style.borderColor = "darkslategrey";
             document.getElementById("amountInput").value = '';
             setTimeout(() => {  
-                document.getElementById("x").style.borderColor = "white";
+                document.getElementById("x").style.borderColor = "red";
                 document.getElementById("x").style.transition = "0.3s";
             }, 100);
             setTimeout(() => {  
@@ -873,7 +981,7 @@
             document.getElementById("x").style.pointerEvents = "none";
             document.getElementById("x2").style.pointerEvents = "none";
             setTimeout(() => {  
-                document.getElementById("x2").style.borderColor = "white";
+                document.getElementById("x2").style.borderColor = "red";
                 document.getElementById("x2").style.transition = "0.3s";
                 document.getElementById("amount").style.opacity = "0";
                 document.getElementById("amountInput").style.opacity = "0";
@@ -926,9 +1034,225 @@
             setTimeout(() => {
                 document.getElementById("startAdvice").style.opacity = "1";
                 document.getElementById("check").style.pointerEvents = "all";
-                document.getElementById("check").style.color = "white";
-                document.getElementById("check").style.borderColor = "white";
+                document.getElementById("check").style.color = "green";
+                document.getElementById("check").style.borderColor = "green";
             }, 4400);
+        }
+        function atsauktiMokejima() {
+            document.getElementById("click").play();
+            document.getElementById("check").style.display = "flex";
+            document.getElementById("check").style.pointerEvents = "none";
+            document.getElementById("check").style.borderColor = "darkslategrey";
+            document.getElementById("check").style.color = "darkslategrey";
+            document.getElementById("check3").style.display = "none";
+            document.getElementById("check3").style.pointerEvents = "none";
+            document.getElementById("x4").style.borderColor = "darkslategrey";
+            document.getElementById("x4").style.transition = "none";
+            document.getElementById("x4").style.pointerEvents = "none";
+            document.getElementById("x").style.pointerEvents = "none";
+            setTimeout(() => {  
+                document.getElementById("x4").style.borderColor = "red";
+                document.getElementById("x4").style.transition = "0.3s";
+                document.getElementById("attemptsRemaining").style.opacity = "0";
+                document.getElementById("enterPin").style.opacity = "0";
+                document.getElementById("pinInput").style.opacity = "0";
+            }, 100);
+            setTimeout(() => {  
+                document.getElementById("x4").style.borderColor = "darkslategrey";
+                document.getElementById("x4").style.color = "darkslategrey";
+                document.getElementById("dirba").style.opacity = "1";
+                document.getElementById("loading").style.opacity = "1";
+            }, 250);
+            setTimeout(() => {  
+                document.getElementById("pinInput").value = '';
+                document.getElementById("x").style.display = "flex";
+                document.getElementById("x4").style.display = "none";
+                document.getElementById("x4").style.pointerEvents = "all";
+            }, 400);
+            setTimeout(() => {  
+                document.getElementById("dirba").style.opacity = "0";
+                document.getElementById("loading").style.opacity = "0";
+            }, 3250);
+            setTimeout(() => {  
+                document.getElementById("ready").style.opacity = "1";
+            }, 3400);
+            setTimeout(() => {
+                document.getElementById("startAdvice").style.opacity = "1";
+                document.getElementById("check").style.pointerEvents = "all";
+                document.getElementById("check").style.borderColor = "green";
+                document.getElementById("check").style.color = "green";
+            }, 4400);
+        }
+        function vienasQ() {
+            document.getElementById("click").play();
+            document.getElementById('click').currentTime = 0;
+            // document.getElementById("x").style.display = "flex";
+            // document.getElementById("x").style.pointerEvents = "all";
+            document.getElementById("check3").style.pointerEvents = "all";
+            document.getElementById("check3").style.color = "green";
+            document.getElementById("check3").style.borderColor = "green";
+            // document.getElementById("x2").style.display = "none";
+            document.getElementById("1q").style.borderColor = "darkslategrey";
+            document.getElementById("1q").style.transition = "none";
+            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '1';
+            setTimeout(() => {  
+                document.getElementById("1q").style.borderColor = "white";
+                document.getElementById("1q").style.transition = "0.3s";
+            }, 100);
+        }
+        function du() {
+            document.getElementById("click").play();
+            document.getElementById('click').currentTime = 0;
+            document.getElementById("x").style.display = "flex";
+            document.getElementById("x").style.pointerEvents = "all";
+            document.getElementById("check2").style.pointerEvents = "all";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
+            document.getElementById("x2").style.display = "none";
+            document.getElementById("2").style.borderColor = "darkslategrey";
+            document.getElementById("2").style.transition = "none";
+            document.getElementById("amountInput").value = document.getElementById("amountInput").value + '2';
+            setTimeout(() => {  
+                document.getElementById("2").style.borderColor = "white";
+                document.getElementById("2").style.transition = "0.3s";
+            }, 100);
+        }
+        function trys() {
+            document.getElementById("click").play();
+            document.getElementById('click').currentTime = 0;
+            document.getElementById("x").style.display = "flex";
+            document.getElementById("x").style.pointerEvents = "all";
+            document.getElementById("check2").style.pointerEvents = "all";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
+            document.getElementById("x2").style.display = "none";
+            document.getElementById("3").style.borderColor = "darkslategrey";
+            document.getElementById("3").style.transition = "none";
+            document.getElementById("amountInput").value = document.getElementById("amountInput").value + '3';
+            setTimeout(() => {  
+                document.getElementById("3").style.borderColor = "white";
+                document.getElementById("3").style.transition = "0.3s";
+            }, 100);
+        }
+        function keturi() {
+            document.getElementById("click").play();
+            document.getElementById('click').currentTime = 0;
+            document.getElementById("x").style.display = "flex";
+            document.getElementById("x").style.pointerEvents = "all";
+            document.getElementById("check2").style.pointerEvents = "all";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
+            document.getElementById("x2").style.display = "none";
+            document.getElementById("4").style.borderColor = "darkslategrey";
+            document.getElementById("4").style.transition = "none";
+            document.getElementById("amountInput").value = document.getElementById("amountInput").value + '4';
+            setTimeout(() => {  
+                document.getElementById("4").style.borderColor = "white";
+                document.getElementById("4").style.transition = "0.3s";
+            }, 100);
+        }
+        function penki() {
+            document.getElementById("click").play();
+            document.getElementById('click').currentTime = 0;
+            document.getElementById("x").style.display = "flex";
+            document.getElementById("x").style.pointerEvents = "all";
+            document.getElementById("check2").style.pointerEvents = "all";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
+            document.getElementById("x2").style.display = "none";
+            document.getElementById("5").style.borderColor = "darkslategrey";
+            document.getElementById("5").style.transition = "none";
+            document.getElementById("amountInput").value = document.getElementById("amountInput").value + '5';
+            setTimeout(() => {  
+                document.getElementById("5").style.borderColor = "white";
+                document.getElementById("5").style.transition = "0.3s";
+            }, 100);
+        }
+        function sesi() {
+            document.getElementById("click").play();
+            document.getElementById('click').currentTime = 0;
+            document.getElementById("x").style.display = "flex";
+            document.getElementById("x").style.pointerEvents = "all";
+            document.getElementById("check2").style.pointerEvents = "all";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
+            document.getElementById("x2").style.display = "none";
+            document.getElementById("6").style.borderColor = "darkslategrey";
+            document.getElementById("6").style.transition = "none";
+            document.getElementById("amountInput").value = document.getElementById("amountInput").value + '6';
+            setTimeout(() => {  
+                document.getElementById("6").style.borderColor = "white";
+                document.getElementById("6").style.transition = "0.3s";
+            }, 100);
+        }
+        function septyni() {
+            document.getElementById("click").play();
+            document.getElementById('click').currentTime = 0;
+            document.getElementById("x").style.display = "flex";
+            document.getElementById("x").style.pointerEvents = "all";
+            document.getElementById("check2").style.pointerEvents = "all";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
+            document.getElementById("x2").style.display = "none";
+            document.getElementById("7").style.borderColor = "darkslategrey";
+            document.getElementById("7").style.transition = "none";
+            document.getElementById("amountInput").value = document.getElementById("amountInput").value + '7';
+            setTimeout(() => {  
+                document.getElementById("7").style.borderColor = "white";
+                document.getElementById("7").style.transition = "0.3s";
+            }, 100);
+        }
+        function astuoni() {
+            document.getElementById("click").play();
+            document.getElementById('click').currentTime = 0;
+            document.getElementById("x").style.display = "flex";
+            document.getElementById("x").style.pointerEvents = "all";
+            document.getElementById("check2").style.pointerEvents = "all";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
+            document.getElementById("x2").style.display = "none";
+            document.getElementById("8").style.borderColor = "darkslategrey";
+            document.getElementById("8").style.transition = "none";
+            document.getElementById("amountInput").value = document.getElementById("amountInput").value + '8';
+            setTimeout(() => {  
+                document.getElementById("8").style.borderColor = "white";
+                document.getElementById("8").style.transition = "0.3s";
+            }, 100);
+        }
+        function devyni() {
+            document.getElementById("click").play();
+            document.getElementById('click').currentTime = 0;
+            document.getElementById("x").style.display = "flex";
+            document.getElementById("x").style.pointerEvents = "all";
+            document.getElementById("check2").style.pointerEvents = "all";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
+            document.getElementById("x2").style.display = "none";
+            document.getElementById("9").style.borderColor = "darkslategrey";
+            document.getElementById("9").style.transition = "none";
+            document.getElementById("amountInput").value = document.getElementById("amountInput").value + '9';
+            setTimeout(() => {  
+                document.getElementById("9").style.borderColor = "white";
+                document.getElementById("9").style.transition = "0.3s";
+            }, 100);
+        }
+
+        function nulis() {
+            document.getElementById("click").play();
+            document.getElementById('click').currentTime = 0;
+            document.getElementById("x").style.display = "flex";
+            document.getElementById("x").style.pointerEvents = "all";
+            document.getElementById("check2").style.pointerEvents = "all";
+            document.getElementById("check2").style.color = "green";
+            document.getElementById("check2").style.borderColor = "green";
+            document.getElementById("x2").style.display = "none";
+            document.getElementById("0").style.borderColor = "darkslategrey";
+            document.getElementById("0").style.transition = "none";
+            document.getElementById("amountInput").value = document.getElementById("amountInput").value + 0;
+            setTimeout(() => {  
+                document.getElementById("0").style.borderColor = "white";
+                document.getElementById("0").style.transition = "0.3s";
+            }, 100);
         }
     </script>
 </body>
