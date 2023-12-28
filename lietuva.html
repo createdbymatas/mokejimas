@@ -7,9 +7,9 @@
     <link rel="shortcut icon" type="image/jpg" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onload="loadFunction()">
       <style>
           *{
             margin: 0;
@@ -17,6 +17,12 @@
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
             transition: 0.15s;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
           }
           body{
               background-color: black;
@@ -98,11 +104,42 @@
                   color: white;
               }
           }
+          #screenSize{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 90;
+            background-color: black;
+            color: white;
+        }
+        @media only screen and (max-width: 750px){
+            #screenSize{
+                display: none;
+            }
+        }
     </style>
     <audio src="click.mp3" id="click"></audio>
     <audio src="beep.mp3" id="beep"></audio>
     <audio src="repeat.mp3" id="repeat"></audio>
     
+    <div id="screenSize">
+        <div style="width: 100px; height: 100px; display: flex; justify-content: center; align-items: center;">
+            <i class="fa-solid fa-mobile-screen-button" style="font-size: 70px; position: absolute;"></i>
+            <i class="fa-regular fa-circle-xmark" style="font-size: 30px; background-color: black; box-shadow: 0 0 5px black; border-radius: 100%; margin-top: 60px; z-index: 2; margin-left: 45px;"></i>
+        </div>
+    </div>
+    
+    <div style="width: 100%; height: 100%; position: fixed; left: 0; right: 0; top: 0; bottom: 0; background-color: black; z-index: 5; transition: 0.3s;" id="background"></div>
+    <p style="margin: 0; width: 100%; height: 30px; display: flex; justify-content: center; align-items: center; background-color: darkslategrey; position: fixed; bottom: 0; left: 0; right: 0; z-index: 6; transition: 0.3s;" id="busyBottom">Busy</p>
+
     <h1 id="logo" style="color: darkslategrey; transition: 0.3s; animation: blink 5s linear infinite; font-weight: 400; cursor: default;" onclick="run()">&copy; FINBONK</h1>
     <div style="width: 100%; height: 10px; display: flex; justify-content: space-around; align-items: center; padding-left: 20px; padding-right: 20px; margin-top: 10px;">
         <div style="width: 25px; height: 13px; background-color: darkslategrey; border-radius: 3px; transition: none;" id="zalias1"></div>
@@ -111,7 +148,7 @@
         <div style="width: 25px; height: 13px; background-color: darkslategrey; border-radius: 3px; transition: none;" id="zalias4"></div>
     </div>
     <div id="screen" onclick="contactless()">
-        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0; font-family: 'Raleway', sans-serif;" id="created"><span id="raide1" style="transition: 0.3s; font-family: 'Raleway', sans-serif;">C</span><span id="raide2" style="transition: 0.3s; font-family: 'Raleway', sans-serif;">r</span><span id="raide3" style="transition: 0.3s; font-family: 'Raleway', sans-serif;">e</span><span id="raide4" style="transition: 0.3s; font-family: 'Raleway', sans-serif;">a</span><span id="raide5" style="transition: 0.3s; font-family: 'Raleway', sans-serif;">t</span><span id="raide6" style="transition: 0.3s; font-family: 'Raleway', sans-serif;">e</span><span id="raide7" style="transition: 0.3s; font-family: 'Raleway', sans-serif;">d</span> <span id="raide8" style="transition: 0.3s; font-family: 'Raleway', sans-serif;">b</span><span id="raide9" style="transition: 0.3s; font-family: 'Raleway', sans-serif;">y</span> <span id="raide10" style="transition: 0.3s; font-family: 'Raleway', sans-serif;">M</span><span id="raide11" style="transition: 0.3s; font-family: 'Raleway', sans-serif;">a</span><span id="raide12" style="transition: 0.3s; font-family: 'Raleway', sans-serif;">t</span><span id="raide13" style="transition: 0.3s; font-family: 'Raleway', sans-serif;">a</span><span id="raide14" style="transition: 0.3s; font-family: 'Raleway', sans-serif;">s</span></p>
+        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="created"><span id="raide1" style="transition: 0.3s;">C</span><span id="raide2" style="transition: 0.3s;">r</span><span id="raide3" style="transition: 0.3s;">e</span><span id="raide4" style="transition: 0.3s;">a</span><span id="raide5" style="transition: 0.3s;">t</span><span id="raide6" style="transition: 0.3s;">e</span><span id="raide7" style="transition: 0.3s;">d</span> <span id="raide8" style="transition: 0.3s;">b</span><span id="raide9" style="transition: 0.3s;">y</span> <span id="raide10" style="transition: 0.3s;">M</span><span id="raide11" style="transition: 0.3s;">a</span><span id="raide12" style="transition: 0.3s;">t</span><span id="raide13" style="transition: 0.3s;">a</span><span id="raide14" style="transition: 0.3s;">s</span></p>
         <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="startAdvice">Norėdami pradėti transakciją, paspauskite <i class="fa-solid fa-check" style="color: green;"></i></p>
         <i class="fa-regular fa-hourglass-half" style="position: absolute; font-size: 70px; color: black; opacity: 0; margin-top: -30px;" id="loading"></i>
         <p style="position: absolute; font-size: 22px; color: black; opacity: 0; margin-top: 90px; text-transform: none;" id="busyEN">Busy</p>
@@ -127,9 +164,9 @@
         <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="contactlessAvailable">Galimas bekontaktis atsiskaitymas</p>
         <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="enterPin">Įveskite PIN kodą</p>
         <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="attemptsRemaining">Liko bandymų: 3</p>
+        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="approved">Patvirtinta</p>
         <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="removeCard">Išimkite kortelę</p>
-        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="paymentSuccessful">Mokėjimas sėkmingas</p>
-        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="contactlessSuccess">Mokėjimas sėkmingas</p>
+        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="contactlessSuccess">Patvirtinta</p>
         <input type="password" style="user-select: none; pointer-events: none; border: none; background-color: transparent; width: 88px; height: 50px; color: black; text-align: center; font-size: 50px; margin-top: 135px; opacity: 0; position: absolute; padding-top: 10px;" id="pinInput">
         <i class="fa-solid fa-signal" style="position: absolute; color: black; top: 15px; left: 15px; opacity: 0; font-size: 15px;" id="signal"></i>
         <i class="fa-solid fa-building-columns" style="position: absolute; color: black; top: 15px; left: 40px; opacity: 0; font-size: 15px;" id="bank"></i>
@@ -157,21 +194,30 @@
             <div class="number" style="pointer-events: none;" id="9" onclick="devyni()">9<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">wxyz</span></div><div class="number" style="pointer-events: none; display: none;" id="9q" onclick="devyniQ()">9<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">wxyz</span></div>
         </div>
         <div style="display: flex; justify-content: space-around; align-items: center; width: 100%;">
-            <div class="number" style="pointer-events: none;" id="x" onclick="trinti()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i></div>
-            <div class="number" style="display: none; color: red; border-color: red;" id="x2" onclick="atsaukti()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i></div>
-            <div class="number" style="display: none;" id="x3" onclick="atsauktiInsert()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i></div>
-            <div class="number" style="display: none;" id="x4" onclick="atsauktiMokejima()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i></div>
-            <div class="number" style="display: none; color: red; border-color: red;" id="x5" onclick="trintiPin()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i></div>
+            <div class="number" style="pointer-events: none;" id="x" onclick="trinti()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i><span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">can</span></div>
+            <div class="number" style="display: none; color: red; border-color: red;" id="x2" onclick="atsaukti()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i><span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">can</span></div>
+            <div class="number" style="display: none;" id="x3" onclick="atsauktiInsert()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i><span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">can</span></div>
+            <div class="number" style="display: none;" id="x4" onclick="atsauktiMokejima()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i><span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">can</span></div>
+            <div class="number" style="display: none; color: red; border-color: red;" id="x5" onclick="trintiPin()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i><span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">can</span></div>
             <div class="number" style="pointer-events: none;" id="0" onclick="nulis()">0<i class="fa-solid fa-plus" style="font-size: 15px; margin-left: 5px; margin-top: 2px; transition: 0.01s;"></i></div><div class="number" style="pointer-events: none; display: none;" id="0q" onclick="nulisQ()">0<i class="fa-solid fa-plus" style="font-size: 15px; margin-left: 5px; margin-top: 2px; transition: 0.01s;"></i></div>
-            <div class="number" style="pointer-events: none;" id="check" onclick="startTransaction()"><i class="fa-solid fa-check" style="transition: 0.01s;"></i></div>
-            <div class="number" style="pointer-events: none; display: none;" id="check2" onclick="openTransaction()"><i class="fa-solid fa-check" style="transition: 0.01s;"></i></div>
-            <div class="number" style="pointer-events: none; display: none;" id="check3" onclick="baigtiMokejima()"><i class="fa-solid fa-check" style="transition: 0.01s;"></i></div>
+            <div class="number" style="pointer-events: none;" id="check" onclick="startTransaction()"><i class="fa-solid fa-check" style="transition: 0.01s;"></i><span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">cfm</span></div>
+            <div class="number" style="pointer-events: none; display: none;" id="check2" onclick="openTransaction()"><i class="fa-solid fa-check" style="transition: 0.01s;"></i><span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">cfm</span></div>
+            <div class="number" style="pointer-events: none; display: none;" id="check3" onclick="baigtiMokejima()"><i class="fa-solid fa-check" style="transition: 0.01s;"></i><span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">cfm</span></div>
         </div>
     </div>
     <div style="width: 100%; height: 50px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 1; display: none;" id="insertCardComplete" onclick="cardInserted()"></div>
     <div style="width: 100%; height: 50px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 1; display: none;" id="removeCardComplete" onclick="cardRemoved()"></div>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
+        function loadFunction() {
+            setTimeout(() => {  
+                document.getElementById("background").style.opacity = "0";
+            }, 1000);
+            setTimeout(() => {  
+                document.getElementById("background").style.display = "none";
+                document.getElementById("busyBottom").style.bottom = "-30px";
+            }, 1300);
+        }
         function run() {
             document.getElementById("logo").style.pointerEvents = "none";
             document.getElementById("logo").style.animation = "none";
@@ -1419,7 +1465,7 @@
                 document.getElementById("loading").style.opacity = "0";
             }, 10250);
             setTimeout(() => {  
-                document.getElementById("removeCard").style.opacity = "1";
+                document.getElementById("approved").style.opacity = "1";
             }, 10400);
             setTimeout(() => {
                 document.getElementById("check3").style.display = "none";
@@ -1453,17 +1499,19 @@
                 document.getElementById("pinInput").value = '';
             }, 11000);
             setTimeout(() => {
-                document.getElementById("paymentSuccessful").style.opacity = "1";
+                document.getElementById("approved").style.opacity = "0";
+            }, 16250);
+            setTimeout(() => {
+                document.getElementById("removeCard").style.opacity = "1";
                 document.getElementById("repeat").play();
                 document.getElementById("removeCardComplete").style.display = "block";
-            }, 11400);
+            }, 16400);
         }
         function cardRemoved() {
             document.getElementById("removeCardComplete").style.display = "none";
             document.getElementById("repeat").pause();
             document.getElementById('repeat').currentTime = 0;
             setTimeout(() => {  
-                document.getElementById("paymentSuccessful").style.opacity = "0";
                 document.getElementById("removeCard").style.opacity = "0";
                 document.getElementById("repeat").pause();
                 document.getElementById('repeat').currentTime = 0;

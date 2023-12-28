@@ -129,7 +129,7 @@
     <audio src="click.mp3" id="click"></audio>
     <audio src="beep.mp3" id="beep"></audio>
     <audio src="repeat.mp3" id="repeat"></audio>
-
+    
     <div id="screenSize">
         <div style="width: 100px; height: 100px; display: flex; justify-content: center; align-items: center;">
             <i class="fa-solid fa-mobile-screen-button" style="font-size: 70px; position: absolute;"></i>
@@ -149,28 +149,28 @@
     </div>
     <div id="screen" onclick="contactless()">
         <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="created"><span id="raide1" style="transition: 0.3s;">C</span><span id="raide2" style="transition: 0.3s;">r</span><span id="raide3" style="transition: 0.3s;">e</span><span id="raide4" style="transition: 0.3s;">a</span><span id="raide5" style="transition: 0.3s;">t</span><span id="raide6" style="transition: 0.3s;">e</span><span id="raide7" style="transition: 0.3s;">d</span> <span id="raide8" style="transition: 0.3s;">b</span><span id="raide9" style="transition: 0.3s;">y</span> <span id="raide10" style="transition: 0.3s;">M</span><span id="raide11" style="transition: 0.3s;">a</span><span id="raide12" style="transition: 0.3s;">t</span><span id="raide13" style="transition: 0.3s;">a</span><span id="raide14" style="transition: 0.3s;">s</span></p>
-        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="startAdvice">Pour démarrer la transaction, appuyez <i class="fa-solid fa-check" style="color: green;"></i></p>
+        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="startAdvice">Tehingu alustamiseks vajutage <i class="fa-solid fa-check" style="color: green;"></i></p>
         <i class="fa-regular fa-hourglass-half" style="position: absolute; font-size: 70px; color: black; opacity: 0; margin-top: -30px;" id="loading"></i>
         <p style="position: absolute; font-size: 22px; color: black; opacity: 0; margin-top: 90px; text-transform: none;" id="busyEN">Busy</p>
-        <p style="position: absolute; font-size: 22px; color: black; opacity: 0; margin-top: 90px; text-transform: none;" id="dirba">Occupé</p>
-        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="ready">Prêt</p>
-        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="amount">Entrer le montant</p>
+        <p style="position: absolute; font-size: 22px; color: black; opacity: 0; margin-top: 90px; text-transform: none;" id="dirba">Hõivatud</p>
+        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="ready">Valmis</p>
+        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="amount">Sisestage summa</p>
         <input type="number" style="user-select: none; pointer-events: none; border: none; background-color: transparent; width: 100px; height: 50px; color: black; text-align: center; font-size: 25px; margin-top: 135px; opacity: 0; position: absolute;" id="amountInput">
         <div style="width: 50px; height: 20px; position: absolute; margin-top: 160px; margin-left: -80px; opacity: 0; z-index: 1; background-image: linear-gradient(white, transparent); transform: rotate(-90deg); transition: none;" id="input1shadow"></div>
         <div style="width: 50px; height: 20px; position: absolute; margin-top: 160px; margin-left: 80px; opacity: 0; z-index: 1; background-image: linear-gradient(white, transparent); transform: rotate(90deg); transition: none;" id="input2shadow"></div>
         <p style="font-size: 25px; position: absolute; color: black; margin-top: 135px; margin-left: 130px; z-index: 2; opacity: 0;" id="euro">€</p>
-        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="amountRoundUp">Arrondir le montant s'il a besoin d'une ,</p>
-        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="insertCard">Insérer la carte</p>
-        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="contactlessAvailable">Paiement sans contact disponible</p>
-        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="enterPin">Entrez le NIP</p>
-        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="attemptsRemaining">Tentatives restantes: 3</p>
-        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="approved">Approuvé</p>
-        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="removeCard">Retirez carte</p>
-        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="contactlessSuccess">Approuvé</p>
+        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="amountRoundUp">Ümardage summa, kui see vajab ,</p>
+        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="insertCard">Sisestage kaart</p>
+        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="contactlessAvailable">Viipemakse võimalus</p>
+        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="enterPin">Sisestage PIN-kood</p>
+        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="attemptsRemaining">Katsed jäänud: 3</p>
+        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="approved">Kinnitatud</p>
+        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="removeCard">Eemalda kaart</p>
+        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="contactlessSuccess">Kinnitatud</p>
         <input type="password" style="user-select: none; pointer-events: none; border: none; background-color: transparent; width: 88px; height: 50px; color: black; text-align: center; font-size: 50px; margin-top: 135px; opacity: 0; position: absolute; padding-top: 10px;" id="pinInput">
         <i class="fa-solid fa-signal" style="position: absolute; color: black; top: 15px; left: 15px; opacity: 0; font-size: 15px;" id="signal"></i>
         <i class="fa-solid fa-building-columns" style="position: absolute; color: black; top: 15px; left: 40px; opacity: 0; font-size: 15px;" id="bank"></i>
-        <p style="position: absolute; color: black; top: 15px; left: 60px; opacity: 0; font-size: 15px;" id="connectedBank">FINBONK Belgique</p>
+        <p style="position: absolute; color: black; top: 15px; left: 60px; opacity: 0; font-size: 15px;" id="connectedBank">FINBONK Eesti</p>
         <img src="contactless.png" alt="Contactless is available" style="width: 15px; position: absolute; top: 15px; right: 15px; opacity: 0; font-size: 15px;" id="contactless">
         <i class="fa-brands fa-apple-pay" style="font-size: 25px; position: absolute; top: 40px; right: 8px; opacity: 0; color: black;" id="apay"></i>
         <i class="fa-brands fa-google-pay" style="font-size: 25px; position: absolute; top: 65px; right: 8px; opacity: 0; color: black;" id="gpay"></i>
