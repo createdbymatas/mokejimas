@@ -92,9 +92,9 @@
     <p id="10" onclick="vokietija()">Deutschland <i class="fa-solid fa-chevron-right"></i></p>
     <p id="11" onclick="graikija()">Ελλάδα <i class="fa-solid fa-chevron-right"></i></p>
     <p id="12" onclick="vengrija()">Magyarország <i class="fa-solid fa-chevron-right"></i></p>
-    <p id="13">Ireland <i class="fa-solid fa-chevron-right"></i></p>
-    <p id="14">Italia <i class="fa-solid fa-chevron-right"></i></p>
-    <p id="15">Latvija <i class="fa-solid fa-chevron-right"></i></p>
+    <p id="13" onclick="airija()">Ireland <i class="fa-solid fa-chevron-right"></i></p>
+    <p id="14" onclick="italija()">Italia <i class="fa-solid fa-chevron-right"></i></p>
+    <p id="15" onclick="latvija()">Latvija <i class="fa-solid fa-chevron-right"></i></p>
     <p id="16" onclick="lietuva()">Lietuva <i class="fa-solid fa-chevron-right"></i></p>
     <p id="17">Lëtzebuerg <i class="fa-solid fa-chevron-right"></i></p>
     <p id="18">Malta <i class="fa-solid fa-chevron-right"></i></p>
@@ -292,6 +292,27 @@
             document.getElementById("busyBottom").style.bottom = "-0";
             setTimeout(() => {  
                 location.replace("vengrija.html")
+            }, 300);
+        }
+        function airija() {
+            document.getElementById("13").style.color = "darkslategrey";
+            document.getElementById("busyBottom").style.bottom = "-0";
+            setTimeout(() => {  
+                location.replace("airija.html")
+            }, 300);
+        }
+        function italija() {
+            document.getElementById("14").style.color = "darkslategrey";
+            document.getElementById("busyBottom").style.bottom = "-0";
+            setTimeout(() => {  
+                location.replace("italija.html")
+            }, 300);
+        }
+        function latvija() {
+            document.getElementById("15").style.color = "darkslategrey";
+            document.getElementById("busyBottom").style.bottom = "-0";
+            setTimeout(() => {  
+                location.replace("latvija.html")
             }, 300);
         }
         function lietuva() {
