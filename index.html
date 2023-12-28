@@ -96,10 +96,10 @@
     <p id="14" onclick="italija()">Italia <i class="fa-solid fa-chevron-right"></i></p>
     <p id="15" onclick="latvija()">Latvija <i class="fa-solid fa-chevron-right"></i></p>
     <p id="16" onclick="lietuva()">Lietuva <i class="fa-solid fa-chevron-right"></i></p>
-    <p id="17">Lëtzebuerg <i class="fa-solid fa-chevron-right"></i></p>
-    <p id="18">Malta <i class="fa-solid fa-chevron-right"></i></p>
-    <p id="19">Nederland <i class="fa-solid fa-chevron-right"></i></p>
-    <p id="20">Polska <i class="fa-solid fa-chevron-right"></i></p>
+    <p id="17" onclick="liuksemburgas()">Luxembourg <i class="fa-solid fa-chevron-right"></i></p>
+    <p id="18" onclick="malta()">Malta <i class="fa-solid fa-chevron-right"></i></p>
+    <p id="19" onclick="nyderlandai()">Nederland <i class="fa-solid fa-chevron-right"></i></p>
+    <p id="20" onclick="lenkija()">Polska <i class="fa-solid fa-chevron-right"></i></p>
     <p id="21">Portugal <i class="fa-solid fa-chevron-right"></i></p>
     <p id="22">România <i class="fa-solid fa-chevron-right"></i></p>
     <p id="23">Slovensko <i class="fa-solid fa-chevron-right"></i></p>
@@ -320,6 +320,41 @@
             document.getElementById("busyBottom").style.bottom = "-0";
             setTimeout(() => {  
                 location.replace("lietuva.html")
+            }, 300);
+        }
+        function lietuva() {
+            document.getElementById("16").style.color = "darkslategrey";
+            document.getElementById("busyBottom").style.bottom = "-0";
+            setTimeout(() => {  
+                location.replace("lietuva.html")
+            }, 300);
+        }
+        function liuksemburgas() {
+            document.getElementById("17").style.color = "darkslategrey";
+            document.getElementById("busyBottom").style.bottom = "-0";
+            setTimeout(() => {  
+                location.replace("liuksemburgas.html")
+            }, 300);
+        }
+        function malta() {
+            document.getElementById("18").style.color = "darkslategrey";
+            document.getElementById("busyBottom").style.bottom = "-0";
+            setTimeout(() => {  
+                location.replace("malta.html")
+            }, 300);
+        }
+        function nyderlandai() {
+            document.getElementById("19").style.color = "darkslategrey";
+            document.getElementById("busyBottom").style.bottom = "-0";
+            setTimeout(() => {  
+                location.replace("nyderlandai.html")
+            }, 300);
+        }
+        function lenkija() {
+            document.getElementById("20").style.color = "darkslategrey";
+            document.getElementById("busyBottom").style.bottom = "-0";
+            setTimeout(() => {  
+                location.replace("lenkija.html")
             }, 300);
         }
     </script>
