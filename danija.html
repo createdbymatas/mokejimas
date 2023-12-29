@@ -129,6 +129,7 @@
     <audio src="click.mp3" id="click"></audio>
     <audio src="beep.mp3" id="beep"></audio>
     <audio src="repeat.mp3" id="repeat"></audio>
+    <audio src="confirmed.mp3" id="confirmed"></audio>
     
     <div id="screenSize">
         <div style="width: 100px; height: 100px; display: flex; justify-content: center; align-items: center;">
@@ -158,7 +159,7 @@
         <input type="number" style="user-select: none; pointer-events: none; border: none; background-color: transparent; width: 100px; height: 50px; color: black; text-align: center; font-size: 25px; margin-top: 135px; opacity: 0; position: absolute;" id="amountInput">
         <div style="width: 50px; height: 20px; position: absolute; margin-top: 160px; margin-left: -80px; opacity: 0; z-index: 1; background-image: linear-gradient(white, transparent); transform: rotate(-90deg); transition: none;" id="input1shadow"></div>
         <div style="width: 50px; height: 20px; position: absolute; margin-top: 160px; margin-left: 80px; opacity: 0; z-index: 1; background-image: linear-gradient(white, transparent); transform: rotate(90deg); transition: none;" id="input2shadow"></div>
-        <p style="font-size: 25px; position: absolute; color: black; margin-top: 135px; margin-left: 130px; z-index: 2; opacity: 0;" id="euro">Kr.</p>
+        <p style="font-size: 25px; position: absolute; color: black; margin-top: 135px; margin-left: 135px; z-index: 2; opacity: 0;" id="euro">Kr.</p>
         <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="amountRoundUp">Rund op, hvis der skal et ,</p>
         <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="insertCard">Indsæt kort</p>
         <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="contactlessAvailable">Kontaktløs betaling tilgængelig</p>
@@ -1466,6 +1467,8 @@
             }, 10250);
             setTimeout(() => {  
                 document.getElementById("approved").style.opacity = "1";
+                document.getElementById("confirmed").play();
+                document.getElementById('confirmed').currentTime = 0;
             }, 10400);
             setTimeout(() => {
                 document.getElementById("check3").style.display = "none";
@@ -1574,8 +1577,10 @@
             document.getElementById("input1shadow").style.opacity = "0";
             document.getElementById("input2shadow").style.opacity = "0";
             document.getElementById("euro").style.opacity = "0";
-            document.getElementById("repeat").pause();
+            setTimeout(() => {  
+                document.getElementById("repeat").pause();
             document.getElementById('repeat').currentTime = 0;
+            }, 100);
             setTimeout(() => {  
                 document.getElementById("dirba").style.opacity = "1";
                 document.getElementById("loading").style.opacity = "1";
@@ -1708,6 +1713,8 @@
                 document.getElementById("contactlessSuccess").style.opacity = "1";
                 document.getElementById("gpay").style.opacity = "0";
                 document.getElementById("apay").style.opacity = "0";
+                document.getElementById("confirmed").play();
+                document.getElementById('confirmed').currentTime = 0;
             }, 6150);
             setTimeout(() => {  
                 document.getElementById("contactlessSuccess").style.opacity = "0";

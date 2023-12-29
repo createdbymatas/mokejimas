@@ -129,6 +129,7 @@
     <audio src="click.mp3" id="click"></audio>
     <audio src="beep.mp3" id="beep"></audio>
     <audio src="repeat.mp3" id="repeat"></audio>
+    <audio src="confirmed.mp3" id="confirmed"></audio>
     
     <div id="screenSize">
         <div style="width: 100px; height: 100px; display: flex; justify-content: center; align-items: center;">
@@ -1466,6 +1467,8 @@
             }, 10250);
             setTimeout(() => {  
                 document.getElementById("approved").style.opacity = "1";
+                document.getElementById("confirmed").play();
+                document.getElementById('confirmed').currentTime = 0;
             }, 10400);
             setTimeout(() => {
                 document.getElementById("check3").style.display = "none";
@@ -1574,8 +1577,10 @@
             document.getElementById("input1shadow").style.opacity = "0";
             document.getElementById("input2shadow").style.opacity = "0";
             document.getElementById("euro").style.opacity = "0";
-            document.getElementById("repeat").pause();
+            setTimeout(() => {  
+                document.getElementById("repeat").pause();
             document.getElementById('repeat').currentTime = 0;
+            }, 100);
             setTimeout(() => {  
                 document.getElementById("dirba").style.opacity = "1";
                 document.getElementById("loading").style.opacity = "1";
@@ -1708,6 +1713,8 @@
                 document.getElementById("contactlessSuccess").style.opacity = "1";
                 document.getElementById("gpay").style.opacity = "0";
                 document.getElementById("apay").style.opacity = "0";
+                document.getElementById("confirmed").play();
+                document.getElementById('confirmed').currentTime = 0;
             }, 6150);
             setTimeout(() => {  
                 document.getElementById("contactlessSuccess").style.opacity = "0";
