@@ -104,9 +104,9 @@
     <p id="22" onclick="rumunija()">România <i class="fa-solid fa-chevron-right"></i></p>
     <p id="23" onclick="slovakija()">Slovensko <i class="fa-solid fa-chevron-right"></i></p>
     <p id="24" onclick="slovenija()">Slovenija <i class="fa-solid fa-chevron-right"></i></p>
-    <p id="25">España <i class="fa-solid fa-chevron-right"></i></p>
-    <p id="26">Sverige <i class="fa-solid fa-chevron-right"></i></p>
-    <p id="27">United Kingdom <i class="fa-solid fa-chevron-right"></i></p>
+    <p id="25" onclick="ispanija()">España <i class="fa-solid fa-chevron-right"></i></p>
+    <p id="26" onclick="svedija()">Sverige <i class="fa-solid fa-chevron-right"></i></p>
+    <p id="27" onclick="anglija()">United Kingdom <i class="fa-solid fa-chevron-right"></i></p>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
         function loadFunction() {
@@ -383,6 +383,27 @@
             document.getElementById("busyBottom").style.bottom = "-0";
             setTimeout(() => {  
                 location.replace("slovenija.html")
+            }, 300);
+        }
+        function ispanija() {
+            document.getElementById("25").style.color = "darkslategrey";
+            document.getElementById("busyBottom").style.bottom = "-0";
+            setTimeout(() => {  
+                location.replace("ispanija.html")
+            }, 300);
+        }
+        function svedija() {
+            document.getElementById("26").style.color = "darkslategrey";
+            document.getElementById("busyBottom").style.bottom = "-0";
+            setTimeout(() => {  
+                location.replace("svedija.html")
+            }, 300);
+        }
+        function anglija() {
+            document.getElementById("27").style.color = "darkslategrey";
+            document.getElementById("busyBottom").style.bottom = "-0";
+            setTimeout(() => {  
+                location.replace("anglija.html")
             }, 300);
         }
     </script>
