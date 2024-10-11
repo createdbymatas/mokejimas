@@ -203,7 +203,7 @@
         <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="approved">Patvirtinta</p>
         <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="removeCard">Išimkite kortelę</p>
         <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="contactlessSuccess">Patvirtinta</p>
-        <input type="password" style="user-select: none; pointer-events: none; border: none; background-color: transparent; width: 88px; height: 50px; color: black; text-align: center; font-size: 50px; margin-top: 135px; opacity: 0; position: absolute; padding-top: 10px;" id="pinInput">
+        <input type="text" style="user-select: none; pointer-events: none; border: none; background-color: transparent; width: 100px; height: 50px; color: black; text-align: center; font-size: 25px; margin-top: 135px; opacity: 0; position: absolute; padding-top: 10px;" id="pinInput">
         <i class="fa-solid fa-signal" style="position: absolute; color: black; top: 15px; left: 15px; opacity: 0; font-size: 15px;" id="signal"></i>
         <i class="fa-solid fa-building-columns" style="position: absolute; color: black; top: 15px; left: 40px; opacity: 0; font-size: 15px;" id="bank"></i>
         <p style="position: absolute; color: black; top: 15px; left: 60px; opacity: 0; font-size: 15px;" id="connectedBank">FINBONK Lietuva</p>
@@ -243,6 +243,7 @@
     </div>
     <div style="width: 100%; height: 50px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 1; display: none;" id="insertCardComplete" onclick="cardInserted()"></div>
     <div style="width: 100%; height: 50px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 1; display: none;" id="removeCardComplete" onclick="cardRemoved()"></div>
+
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
         // if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
@@ -1306,13 +1307,12 @@
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
-            document.getElementById("check3").style.pointerEvents = "all";
-            document.getElementById("check3").style.color = "green";
-            document.getElementById("check3").style.borderColor = "green";
             document.getElementById("x4").style.display = "none";
             document.getElementById("1q").style.borderColor = "darkslategrey";
             document.getElementById("1q").style.transition = "none";
-            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '1';
+            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
+            hideKeyboardPin();
+            confirmCheckShow();
             setTimeout(() => {  
                 document.getElementById("1q").style.borderColor = "white";
                 document.getElementById("1q").style.transition = "0.3s";
@@ -1324,13 +1324,12 @@
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
-            document.getElementById("check3").style.pointerEvents = "all";
-            document.getElementById("check3").style.color = "green";
-            document.getElementById("check3").style.borderColor = "green";
             document.getElementById("x4").style.display = "none";
             document.getElementById("2q").style.borderColor = "darkslategrey";
             document.getElementById("2q").style.transition = "none";
-            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '2';
+            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
+            hideKeyboardPin();
+            confirmCheckShow();
             setTimeout(() => {  
                 document.getElementById("2q").style.borderColor = "white";
                 document.getElementById("2q").style.transition = "0.3s";
@@ -1342,13 +1341,12 @@
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
-            document.getElementById("check3").style.pointerEvents = "all";
-            document.getElementById("check3").style.color = "green";
-            document.getElementById("check3").style.borderColor = "green";
             document.getElementById("x4").style.display = "none";
             document.getElementById("3q").style.borderColor = "darkslategrey";
             document.getElementById("3q").style.transition = "none";
-            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '2';
+            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
+            hideKeyboardPin();
+            confirmCheckShow();
             setTimeout(() => {  
                 document.getElementById("3q").style.borderColor = "white";
                 document.getElementById("3q").style.transition = "0.3s";
@@ -1360,13 +1358,12 @@
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
-            document.getElementById("check3").style.pointerEvents = "all";
-            document.getElementById("check3").style.color = "green";
-            document.getElementById("check3").style.borderColor = "green";
             document.getElementById("x4").style.display = "none";
             document.getElementById("4q").style.borderColor = "darkslategrey";
             document.getElementById("4q").style.transition = "none";
-            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '2';
+            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
+            hideKeyboardPin();
+            confirmCheckShow();
             setTimeout(() => {  
                 document.getElementById("4q").style.borderColor = "white";
                 document.getElementById("4q").style.transition = "0.3s";
@@ -1378,13 +1375,12 @@
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
-            document.getElementById("check3").style.pointerEvents = "all";
-            document.getElementById("check3").style.color = "green";
-            document.getElementById("check3").style.borderColor = "green";
             document.getElementById("x4").style.display = "none";
             document.getElementById("5q").style.borderColor = "darkslategrey";
             document.getElementById("5q").style.transition = "none";
-            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '2';
+            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
+            hideKeyboardPin();
+            confirmCheckShow();
             setTimeout(() => {  
                 document.getElementById("5q").style.borderColor = "white";
                 document.getElementById("5q").style.transition = "0.3s";
@@ -1396,13 +1392,12 @@
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
-            document.getElementById("check3").style.pointerEvents = "all";
-            document.getElementById("check3").style.color = "green";
-            document.getElementById("check3").style.borderColor = "green";
             document.getElementById("x4").style.display = "none";
             document.getElementById("6q").style.borderColor = "darkslategrey";
             document.getElementById("6q").style.transition = "none";
-            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '2';
+            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
+            hideKeyboardPin();
+            confirmCheckShow();
             setTimeout(() => {  
                 document.getElementById("6q").style.borderColor = "white";
                 document.getElementById("6q").style.transition = "0.3s";
@@ -1414,13 +1409,12 @@
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
-            document.getElementById("check3").style.pointerEvents = "all";
-            document.getElementById("check3").style.color = "green";
-            document.getElementById("check3").style.borderColor = "green";
             document.getElementById("x4").style.display = "none";
             document.getElementById("7q").style.borderColor = "darkslategrey";
             document.getElementById("7q").style.transition = "none";
-            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '2';
+            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
+            hideKeyboardPin();
+            confirmCheckShow();
             setTimeout(() => {  
                 document.getElementById("7q").style.borderColor = "white";
                 document.getElementById("7q").style.transition = "0.3s";
@@ -1432,13 +1426,12 @@
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
-            document.getElementById("check3").style.pointerEvents = "all";
-            document.getElementById("check3").style.color = "green";
-            document.getElementById("check3").style.borderColor = "green";
             document.getElementById("x4").style.display = "none";
             document.getElementById("8q").style.borderColor = "darkslategrey";
             document.getElementById("8q").style.transition = "none";
-            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '2';
+            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
+            hideKeyboardPin();
+            confirmCheckShow();
             setTimeout(() => {  
                 document.getElementById("8q").style.borderColor = "white";
                 document.getElementById("8q").style.transition = "0.3s";
@@ -1450,13 +1443,12 @@
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
-            document.getElementById("check3").style.pointerEvents = "all";
-            document.getElementById("check3").style.color = "green";
-            document.getElementById("check3").style.borderColor = "green";
             document.getElementById("x4").style.display = "none";
             document.getElementById("9q").style.borderColor = "darkslategrey";
             document.getElementById("9q").style.transition = "none";
-            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '2';
+            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
+            hideKeyboardPin();
+            confirmCheckShow();
             setTimeout(() => {  
                 document.getElementById("9q").style.borderColor = "white";
                 document.getElementById("9q").style.transition = "0.3s";
@@ -1469,13 +1461,12 @@
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
-            document.getElementById("check3").style.pointerEvents = "all";
-            document.getElementById("check3").style.color = "green";
-            document.getElementById("check3").style.borderColor = "green";
             document.getElementById("x4").style.display = "none";
             document.getElementById("0q").style.borderColor = "darkslategrey";
             document.getElementById("0q").style.transition = "none";
-            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '2';
+            document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
+            hideKeyboardPin();
+            confirmCheckShow();
             setTimeout(() => {  
                 document.getElementById("0q").style.borderColor = "white";
                 document.getElementById("0q").style.transition = "0.3s";
@@ -1488,10 +1479,9 @@
             document.getElementById("x5").style.transition = "none";
             document.getElementById("x5").style.borderColor = "darkslategrey";
             document.getElementById("x5").style.pointerEvents = "none";
-            document.getElementById("check3").style.pointerEvents = "none";
-            document.getElementById("check3").style.color = "darkslategrey";
-            document.getElementById("check3").style.borderColor = "darkslategrey";
             document.getElementById("pinInput").value = '';
+            hideKeyboardPin();
+            confirmCheckShow();
             setTimeout(() => {  
                 document.getElementById("x5").style.borderColor = "red";
                 document.getElementById("x5").style.transition = "0.3s";
@@ -1500,6 +1490,88 @@
                 document.getElementById("x5").style.display = "none";
                 document.getElementById("x4").style.display = "flex";
             }, 400);
+        }
+        function hideKeyboardPin() {
+            if (document.getElementById("pinInput").value == "******") {
+                document.getElementById("1q").style.pointerEvents = "none";
+                document.getElementById("2q").style.pointerEvents = "none";
+                document.getElementById("3q").style.pointerEvents = "none";
+                document.getElementById("4q").style.pointerEvents = "none";
+                document.getElementById("5q").style.pointerEvents = "none";
+                document.getElementById("6q").style.pointerEvents = "none";
+                document.getElementById("7q").style.pointerEvents = "none";
+                document.getElementById("8q").style.pointerEvents = "none";
+                document.getElementById("9q").style.pointerEvents = "none";
+                document.getElementById("0q").style.pointerEvents = "none";
+                setTimeout(() => {  
+                    document.getElementById("1q").style.borderColor = "darkslategrey";
+                    document.getElementById("1q").style.color = "darkslategrey";
+                    document.getElementById("2q").style.borderColor = "darkslategrey";
+                    document.getElementById("2q").style.color = "darkslategrey";
+                    document.getElementById("3q").style.borderColor = "darkslategrey";
+                    document.getElementById("3q").style.color = "darkslategrey";
+                    document.getElementById("4q").style.borderColor = "darkslategrey";
+                    document.getElementById("4q").style.color = "darkslategrey";
+                    document.getElementById("5q").style.borderColor = "darkslategrey";
+                    document.getElementById("5q").style.color = "darkslategrey";
+                    document.getElementById("6q").style.borderColor = "darkslategrey";
+                    document.getElementById("6q").style.color = "darkslategrey";
+                    document.getElementById("7q").style.borderColor = "darkslategrey";
+                    document.getElementById("7q").style.color = "darkslategrey";
+                    document.getElementById("8q").style.borderColor = "darkslategrey";
+                    document.getElementById("8q").style.color = "darkslategrey";
+                    document.getElementById("9q").style.borderColor = "darkslategrey";
+                    document.getElementById("9q").style.color = "darkslategrey";
+                    document.getElementById("0q").style.borderColor = "darkslategrey";
+                    document.getElementById("0q").style.color = "darkslategrey";
+                }, 101);
+            }
+            else{
+                document.getElementById("1q").style.pointerEvents = "all";
+                document.getElementById("2q").style.pointerEvents = "all";
+                document.getElementById("3q").style.pointerEvents = "all";
+                document.getElementById("4q").style.pointerEvents = "all";
+                document.getElementById("5q").style.pointerEvents = "all";
+                document.getElementById("6q").style.pointerEvents = "all";
+                document.getElementById("7q").style.pointerEvents = "all";
+                document.getElementById("8q").style.pointerEvents = "all";
+                document.getElementById("9q").style.pointerEvents = "all";
+                document.getElementById("0q").style.pointerEvents = "all";
+                setTimeout(() => {  
+                    document.getElementById("1q").style.borderColor = "white";
+                    document.getElementById("1q").style.color = "white";
+                    document.getElementById("2q").style.borderColor = "white";
+                    document.getElementById("2q").style.color = "white";
+                    document.getElementById("3q").style.borderColor = "white";
+                    document.getElementById("3q").style.color = "white";
+                    document.getElementById("4q").style.borderColor = "white";
+                    document.getElementById("4q").style.color = "white";
+                    document.getElementById("5q").style.borderColor = "white";
+                    document.getElementById("5q").style.color = "white";
+                    document.getElementById("6q").style.borderColor = "white";
+                    document.getElementById("6q").style.color = "white";
+                    document.getElementById("7q").style.borderColor = "white";
+                    document.getElementById("7q").style.color = "white";
+                    document.getElementById("8q").style.borderColor = "white";
+                    document.getElementById("8q").style.color = "white";
+                    document.getElementById("9q").style.borderColor = "white";
+                    document.getElementById("9q").style.color = "white";
+                    document.getElementById("0q").style.borderColor = "white";
+                    document.getElementById("0q").style.color = "white";
+                }, 101);
+            }
+        }
+        function confirmCheckShow() {
+            if (document.getElementById("pinInput").value == "****" || document.getElementById("pinInput").value == "*****" || document.getElementById("pinInput").value == "******") {
+                document.getElementById("check3").style.pointerEvents = "all";
+                document.getElementById("check3").style.color = "green";
+                document.getElementById("check3").style.borderColor = "green";
+            }
+            else{
+                document.getElementById("check3").style.pointerEvents = "none";
+                document.getElementById("check3").style.color = "darkslategrey";
+                document.getElementById("check3").style.borderColor = "darkslategrey";
+            }
         }
         function baigtiMokejima() {
             document.getElementById('click').muted = false;
