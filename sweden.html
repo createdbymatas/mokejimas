@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/jpg" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/thumbnail.png">
 </head>
 <body onload="loadFunction()">
       <style>
@@ -36,14 +35,17 @@
             user-select: none;
           }
           body{
-              background-color: black;
-              color: white;
-              height: 100vh;
-              text-align: center;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              flex-direction: column;
+            background-color: black;
+            color: white;
+            height: 100vh;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+          }
+          button{
+            touch-action: manipulation;
           }
           #screen{
             width: 90%;
