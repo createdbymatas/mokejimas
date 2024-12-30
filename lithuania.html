@@ -242,9 +242,15 @@
     </div>
     <div style="width: 100%; height: 50px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 1; display: none;" id="insertCardComplete" onclick="cardInserted()"></div>
     <div style="width: 100%; height: 50px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 1; display: none;" id="removeCardComplete" onclick="cardRemoved()"></div>
+    <button style="display: none;" id="playCardSound" onclick="cardSoundPlay()">play card insert/remove sound</button>
 
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
+        function cardSoundPlay() {
+            document.getElementById('repeat').muted = false;
+            document.getElementById("repeat").play();
+            document.getElementById('repeat').currentTime = 0;
+        }
         // if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
         //     document.getElementById("iphone").style.display = "flex";
         // } else {
@@ -692,9 +698,7 @@
                 document.getElementById("apay").style.opacity = "1";
                 document.getElementById("insertCardComplete").style.display = "block";
                 document.getElementById("screen").style.pointerEvents = "all";
-                document.getElementById('repeat').muted = false;
-                document.getElementById("repeat").play();
-                document.getElementById('repeat').currentTime = 0;
+                document.getElementById("playCardSound").click();
                 document.getElementById("x3").style.color = "red";
                 document.getElementById("x3").style.borderColor = "red";
             }, 6400);
@@ -1724,9 +1728,7 @@
             }, 16250);
             setTimeout(() => {
                 document.getElementById("removeCard").style.opacity = "1";
-                document.getElementById('repeat').muted = false;
-                document.getElementById("repeat").play();
-                document.getElementById('repeat').currentTime = 0;
+                document.getElementById("playCardSound").click();
                 document.getElementById("removeCardComplete").style.display = "block";
             }, 16400);
         }
@@ -1798,7 +1800,7 @@
             document.getElementById("amountInput").style.opacity = "0";
             setTimeout(() => {  
                 document.getElementById("repeat").pause();
-            document.getElementById('repeat').currentTime = 0;
+                document.getElementById('repeat').currentTime = 0;
             }, 100);
             setTimeout(() => {  
                 document.getElementById("dirba").style.opacity = "1";
