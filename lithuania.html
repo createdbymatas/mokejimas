@@ -623,6 +623,10 @@
             }, 4700);
         }
         function openTransaction() {
+            document.getElementById('repeat').muted = false;
+            document.getElementById("repeat").play();
+            document.getElementById('repeat').currentTime = 0;
+
             document.getElementById('click').muted = false;
             document.getElementById("click").play();
             document.getElementById('click').currentTime = 0;
@@ -642,6 +646,9 @@
             document.getElementById("x").style.display = "flex";
             document.getElementById("x").style.pointerEvents = "none";
             document.getElementById("x2").style.display = "none";
+            setTimeout(() => {  
+                document.getElementById("repeat").pause();
+            }, 1);
             setTimeout(() => {  
                 document.getElementById("check2").style.borderColor = "green";
                 document.getElementById("check2").style.transition = "0.3s";
@@ -698,7 +705,8 @@
                 document.getElementById("apay").style.opacity = "1";
                 document.getElementById("insertCardComplete").style.display = "block";
                 document.getElementById("screen").style.pointerEvents = "all";
-                document.getElementById("playCardSound").click();
+                // document.getElementById("playCardSound").click();
+                document.getElementById("repeat").play();
                 document.getElementById("x3").style.color = "red";
                 document.getElementById("x3").style.borderColor = "red";
             }, 6400);
