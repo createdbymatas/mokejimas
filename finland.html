@@ -709,7 +709,6 @@
         function openTransaction() {
             document.getElementById('repeat').muted = false;
             document.getElementById("repeat").play();
-            document.getElementById('repeat').currentTime = 0;
 
             document.getElementById('click').muted = false;
             document.getElementById("click").play();
@@ -789,6 +788,7 @@
                 document.getElementById("apay").style.opacity = "1";
                 document.getElementById("insertCardComplete").style.display = "block";
                 document.getElementById("screen").style.pointerEvents = "all";
+                document.getElementById('repeat').currentTime = 0;
                 document.getElementById("repeat").play();
                 document.getElementById("x3").style.color = "red";
                 document.getElementById("x3").style.borderColor = "red";
@@ -1723,10 +1723,8 @@
         function baigtiMokejima() {
             document.getElementById('repeat').muted = false;
             document.getElementById("repeat").play();
-            document.getElementById('repeat').currentTime = 0;
             document.getElementById('confirmed').muted = false;
             document.getElementById("confirmed").play();
-            document.getElementById('confirmed').currentTime = 0;
 
             document.getElementById('click').muted = false;
             document.getElementById("click").play();
@@ -1790,6 +1788,7 @@
             }, 10250);
             setTimeout(() => {  
                 document.getElementById("approved").style.opacity = "1";
+                document.getElementById('confirmed').currentTime = 0;
                 document.getElementById("confirmed").play();
             }, 10400);
             setTimeout(() => {
@@ -1828,6 +1827,7 @@
             }, 16250);
             setTimeout(() => {
                 document.getElementById("removeCard").style.opacity = "1";
+                document.getElementById('repeat').currentTime = 0;
                 document.getElementById("repeat").play();
                 document.getElementById("removeCardComplete").style.display = "block";
             }, 16400);
@@ -1886,7 +1886,6 @@
         function contactless() {
             document.getElementById('confirmed').muted = false;
             document.getElementById("confirmed").play();
-            document.getElementById('confirmed').currentTime = 0;
 
             document.getElementById("insertCardComplete").style.display = "none";
             document.getElementById("screen").style.pointerEvents = "none";
@@ -2041,6 +2040,7 @@
                 document.getElementById("contactlessSuccess").style.opacity = "1";
                 document.getElementById("gpay").style.opacity = "0";
                 document.getElementById("apay").style.opacity = "0";
+                document.getElementById('confirmed').currentTime = 0;
                 document.getElementById("confirmed").play();
             }, 6150);
             setTimeout(() => {  

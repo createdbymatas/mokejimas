@@ -19,7 +19,7 @@
     <link rel="shortcut icon" type="image/jpg" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="images/thumbnail.png">
 </head>
-<body onload="loadFunction()">
+<body id="body" onload="loadFunction()">
       <style>
           *{
             margin: 0;
@@ -37,15 +37,9 @@
           body{
             background-color: black;
             color: white;
-            height: 100vh;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-          }
-          button{
-            touch-action: manipulation;
+            height: auto;
+            text-align: left;
+            overflow: hidden;
           }
           i{
               transition: 0.3s margin;
@@ -178,11 +172,6 @@
     
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
-        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-            document.getElementById("iphone").style.display = "flex";
-        } else {
-            document.getElementById("iphone").style.display = "none";
-        }
         // Disable right-click
         document.addEventListener('contextmenu', (e) => e.preventDefault());
 
