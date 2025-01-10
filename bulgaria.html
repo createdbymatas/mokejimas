@@ -8,8 +8,8 @@
     <meta name="format-detection" content="telephone=no">
     <meta property="og:image" content="https://raw.githubusercontent.com/createdbymatas/mokejimas/main/images/thumbnail.png">
     <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="512">
-    <meta property="og:image:height" content="512">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="500">
     <meta property="og:title" content="© FINBONK">
     <meta property="og:description" content="Created by Matas">
     <title>&copy; FINBONK</title>
@@ -22,17 +22,17 @@
 <body onload="loadFunction()">
     <style>
         *{
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: 'Montserrat', sans-serif;
-          transition: 0.15s;
-          -webkit-tap-highlight-color: transparent;
-          -webkit-user-select: none;
-          -khtml-user-select: none;
-          -moz-user-select: none;
-          -o-user-select: none;
-          user-select: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            transition: 0.15s;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
         }
         body{
             background-color: black;
@@ -43,21 +43,316 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+          }
+          button{
+            touch-action: manipulation;
+          }
+          #screenSize{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 90;
+            background-color: black;
+            color: white;
+            cursor: not-allowed;
         }
-        button{
-          touch-action: manipulation;
+        #screenSize div{
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .fa-mobile-screen-button{
+            font-size: 70px;
+            position: absolute;
+        }
+        .fa-circle-xmark{
+            font-size: 30px;
+            background-color: black;
+            box-shadow: 0 0 3px black;
+            border-radius: 100%;
+            margin-top: 60px;
+            z-index: 2;
+            margin-left: 45px;
+        }
+        #background{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            left: 0;
+            right: 0; 
+            top: 0;
+            bottom: 0;
+            background-color: black;
+            z-index: 99;
+            transition: 0.3s;
+            cursor: wait;
+        }
+        #busyBottom{
+            margin: 0;
+            width: 100%;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: darkslategrey;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            transition: 0.3s;
+            cursor: wait;
+        }
+        #logo{
+            color: darkslategrey;
+            transition: 0.3s;
+            animation: blink 5s linear infinite;
+            font-weight: 400;
+            cursor: default;
+            font-size: 32px;
+        }
+        #zaliuDiv{
+            width: 100%;
+            height: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-top: 10px;
+        }
+        #zaliuDiv div{
+            width: 25px;
+            height: 13px;
+            background-color: darkslategrey;
+            border-radius: 3px;
+            transition: none;
         }
         #screen{
-          width: 90%;
-          height: 300px;
-          margin-top: 5px;
-          border-radius: 25px;
-          background-color: darkslategrey;
-          position: relative;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          pointer-events: none;
+            width: 90%;
+            height: 300px;
+            margin-top: 5px;
+            border-radius: 25px;
+            background-color: darkslategrey;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+        #created{
+            position: absolute;
+            font-size: 15px;
+            bottom: 15px;
+            color: black;
+            text-transform: none;
+            opacity: 0;
+        }
+        #created span{
+            transition: 0.3s;
+        }
+        #startAdvice{
+            position: absolute;
+            font-size: 15px;
+            bottom: 15px;
+            color: black;
+            text-transform: none;
+            opacity: 0;
+        }
+        #startAdvice i{
+            color: green;
+        }
+        #loading{
+            position: absolute;
+            font-size: 70px;
+            color: black;
+            opacity: 0;
+            margin-top: -30px;
+        }
+        #busyEN{
+            position: absolute;
+            font-size: 22px;
+            color: black;
+            opacity: 0;
+            margin-top: 90px;
+            text-transform: none;
+        }
+        #dirba{
+            position: absolute;
+            font-size: 22px;
+            color: black;
+            opacity: 0;
+            margin-top: 90px;
+            text-transform: none;
+        }
+        #ready{
+            position: absolute;
+            font-size: 30px;
+            color: black;
+            opacity: 0;
+        }
+        #amount{
+            position: absolute;
+            font-size: 30px;
+            color: black;
+            opacity: 0;
+        }
+        #amountInput{
+            user-select: none;
+            pointer-events: none;
+            border: none;
+            background-color: transparent;
+            width: 90%;
+            height: 50px;
+            color: black;
+            text-align: center;
+            font-size: 25px;
+            margin-top: 135px;
+            opacity: 0;
+            position: absolute;
+        }
+        #amountCurrency{
+            position: absolute;
+            font-size: 15px;
+            bottom: 15px;
+            color: black;
+            text-transform: none;
+            opacity: 0;
+        }
+        #insertCard{
+            position: absolute;
+            font-size: 30px;
+            color: black;
+            opacity: 0;
+        }
+        #contactlessAvailable{
+            position: absolute;
+            font-size: 15px;
+            bottom: 15px;
+            color: black;
+            text-transform: none;
+            opacity: 0;
+        }
+        #enterPin{
+            position: absolute;
+            font-size: 30px;
+            color: black;
+            opacity: 0;
+        }
+        #attemptsRemaining{
+            position: absolute;
+            font-size: 15px;
+            bottom: 15px;
+            color: black;
+            text-transform: none;
+            opacity: 0;
+        }
+        #approved{
+            position: absolute;
+            font-size: 30px;
+            color: black;
+            opacity: 0;
+        }
+        #removeCard{
+            position: absolute;
+            font-size: 30px;
+            color: black;
+            opacity: 0;
+        }
+        #contactlessSuccess{
+            position: absolute;
+            font-size: 30px;
+            color: black;
+            opacity: 0;
+        }
+        #pinInput{
+            user-select: none;
+            pointer-events: none;
+            border: none;
+            background-color: transparent;
+            width: 100px;
+            height: 50px;
+            color: black;
+            text-align: center;
+            font-size: 25px;
+            margin-top: 135px;
+            opacity: 0;
+            position: absolute;
+            padding-top: 10px;
+        }
+        #signal{
+            position: absolute;
+            color: black;
+            top: 15px;
+            left: 15px;
+            opacity: 0;
+            font-size: 15px;
+        }
+        #bank{
+            position: absolute;
+            color: black;
+            top: 15px;
+            left: 40px;
+            opacity: 0;
+            font-size: 15px;
+        }
+        #connectedBank{
+            position: absolute;
+            color: black;
+            top: 15px;
+            left: 60px;
+            opacity: 0;
+            font-size: 15px;
+        }
+        #contactless{
+            width: 15px;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            opacity: 0;
+            font-size: 15px;
+        }
+        #applepay{
+            font-size: 25px;
+            position: absolute;
+            top: 40px;
+            right: 8px;
+            opacity: 0;
+            color: black;
+        }
+        #googlepay{
+            font-size: 25px;
+            position: absolute;
+            top: 65px;
+            right: 8px;
+            opacity: 0;
+            color: black;
+        }
+        #cloud{
+            position: absolute;
+            color: black;
+            top: 15px;
+            right: 70px;
+            opacity: 0;
+            font-size: 17px;
+        }
+        #fundsPending{
+            position: absolute;
+            color: black;
+            top: 16px;
+            right: 40px;
+            opacity: 0;
+            font-size: 17px;
         }
         #keyboard{
             width: 90%;
@@ -68,7 +363,13 @@
             flex-direction: column;
             margin-top: 5px;
         }
-        .number{
+        .organiseKeyboard{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+        }
+         .number{
             width: 100px;
             height: 50px;
             border-radius: 25px;
@@ -80,6 +381,46 @@
             align-items: center;
             color: darkslategrey;
             transition: 0.3s;
+            cursor: pointer;
+            pointer-events: none;
+        }
+        .number span{
+            font-size: 15px;
+            margin-left: 5px;
+            transition: 0.01s;
+        }
+        .number i{
+            transition: 0.01s;
+        }
+        .fa-voicemail{
+            font-size: 15px;
+            margin-left: 5px;
+            margin-top: 5px;
+        }
+        .fa-plus{
+            font-size: 15px;
+            margin-left: 5px;
+            margin-top: 2px;
+        }
+        #insertCardComplete{
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            display: none;
+        }
+        #removeCardComplete{
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            display: none;
         }
         @keyframes blink {
             0%{
@@ -87,15 +428,15 @@
                 color: darkslategrey;
             }
             80%{
-                  border-color: darkslategrey;
+                border-color: darkslategrey;
                 color: darkslategrey;
             }
             90%{
-                  border-color: white;
+                border-color: white;
                 color: white;
             }
             100%{
-                  border-color: darkslategrey;
+                border-color: darkslategrey;
                 color: darkslategrey;
             }
         }
@@ -105,120 +446,104 @@
                 color: white;
             }
             80%{
-                  border-color: white;
+                border-color: white;
                 color: white;
             }
             90%{
-                  border-color: darkslategrey;
+                border-color: darkslategrey;
                 color: darkslategrey;
             }
             100%{
-                  border-color: white;
+                border-color: white;
                 color: white;
             }
         }
-        #screenSize{
-          width: 100%;
-          height: 100%;
-          position: fixed;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          top: 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          z-index: 90;
-          background-color: black;
-          color: white;
-          cursor: not-allowed;
-      }
-      @media only screen and (max-width: 750px){
-          #screenSize{
-              display: none;
-          }
-      }
-  </style>
+        @media only screen and (max-width: 750px){
+            #screenSize{
+                display: none;
+            }
+        }
+    </style>
     <audio src="audio/click.mp3" id="click"></audio>
     <audio src="audio/beep.mp3" id="beep"></audio>
     <audio src="audio/repeat.mp3" id="repeat"></audio>
     <audio src="audio/confirmed.mp3" id="confirmed"></audio>
     
     <div id="screenSize">
-        <div style="width: 100px; height: 100px; display: flex; justify-content: center; align-items: center;">
-            <i class="fa-solid fa-mobile-screen-button" style="font-size: 70px; position: absolute;"></i>
-            <i class="fa-regular fa-circle-xmark" style="font-size: 30px; background-color: black; box-shadow: 0 0 3px black; border-radius: 100%; margin-top: 60px; z-index: 2; margin-left: 45px;"></i>
+        <div>
+            <i class="fa-solid fa-mobile-screen-button"></i>
+            <i class="fa-regular fa-circle-xmark"></i>
         </div>
     </div>
     
-    <div style="width: 100%; height: 100%; position: fixed; left: 0; right: 0; top: 0; bottom: 0; background-color: black; z-index: 99; transition: 0.3s; cursor: wait;" id="background"></div>
-    <p style="margin: 0; width: 100%; height: 30px; display: flex; justify-content: center; align-items: center; background-color: darkslategrey; position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; transition: 0.3s; cursor: wait;" id="busyBottom">Busy</p>
+    <div id="background"></div>
+    <p id="busyBottom">Busy</p>
 
-    <h1 id="logo" style="color: darkslategrey; transition: 0.3s; animation: blink 5s linear infinite; font-weight: 400; cursor: default;" onclick="run()">&copy; FINBONK</h1>
-    <div style="width: 100%; height: 10px; display: flex; justify-content: space-around; align-items: center; padding-left: 20px; padding-right: 20px; margin-top: 10px;">
-        <div style="width: 25px; height: 13px; background-color: darkslategrey; border-radius: 3px; transition: none;" id="zalias1"></div>
-        <div style="width: 25px; height: 13px; background-color: darkslategrey; border-radius: 3px; transition: none;" id="zalias2"></div>
-        <div style="width: 25px; height: 13px; background-color: darkslategrey; border-radius: 3px; transition: none;" id="zalias3"></div>
-        <div style="width: 25px; height: 13px; background-color: darkslategrey; border-radius: 3px; transition: none;" id="zalias4"></div>
+    <h1 id="logo" onclick="run()">&copy; FINBONK</h1>
+    <div id="zaliuDiv">
+        <div id="zalias1"></div>
+        <div id="zalias2"></div>
+        <div id="zalias3"></div>
+        <div id="zalias4"></div>
     </div>
     <div id="screen" onclick="contactless()">
-        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="created"><span id="raide1" style="transition: 0.3s;">C</span><span id="raide2" style="transition: 0.3s;">r</span><span id="raide3" style="transition: 0.3s;">e</span><span id="raide4" style="transition: 0.3s;">a</span><span id="raide5" style="transition: 0.3s;">t</span><span id="raide6" style="transition: 0.3s;">e</span><span id="raide7" style="transition: 0.3s;">d</span> <span id="raide8" style="transition: 0.3s;">b</span><span id="raide9" style="transition: 0.3s;">y</span> <span id="raide10" style="transition: 0.3s;">M</span><span id="raide11" style="transition: 0.3s;">a</span><span id="raide12" style="transition: 0.3s;">t</span><span id="raide13" style="transition: 0.3s;">a</span><span id="raide14" style="transition: 0.3s;">s</span></p>
-        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="startAdvice">За да започнете транзакцията, натиснете <i class="fa-solid fa-check" style="color: green;"></i></p>
-        <i class="fa-regular fa-hourglass-half" style="position: absolute; font-size: 70px; color: black; opacity: 0; margin-top: -30px;" id="loading"></i>
-        <p style="position: absolute; font-size: 22px; color: black; opacity: 0; margin-top: 90px; text-transform: none;" id="busyEN">Busy</p>
-        <p style="position: absolute; font-size: 22px; color: black; opacity: 0; margin-top: 90px; text-transform: none;" id="dirba">Работя</p>
-        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="ready">Готов</p>
-        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="amount">Въведи сума</p>
-        <input type="text" style="user-select: none; pointer-events: none; border: none; background-color: transparent; width: 90%; height: 50px; color: black; text-align: center; font-size: 25px; margin-top: 135px; opacity: 0; position: absolute;" id="amountInput">
-        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="amountCurrency">Валута: Лв.</p>
-        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="insertCard">Поставете карта</p>
-        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="contactlessAvailable">Възможност за безконтактно плащане</p>
-        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="enterPin">Въведете PIN</p>
-        <p style="position: absolute; font-size: 15px; bottom: 15px; color: black; text-transform: none; opacity: 0;" id="attemptsRemaining">Остават опити: 3</p>
-        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="approved">Одобрено</p>
-        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="removeCard">Премахнете картатa</p>
-        <p style="position: absolute; font-size: 30px; color: black; opacity: 0;" id="contactlessSuccess">Одобрено</p>
-        <input type="text" style="user-select: none; pointer-events: none; border: none; background-color: transparent; width: 100px; height: 50px; color: black; text-align: center; font-size: 25px; margin-top: 135px; opacity: 0; position: absolute; padding-top: 10px;" id="pinInput">
-        <i class="fa-solid fa-signal" style="position: absolute; color: black; top: 15px; left: 15px; opacity: 0; font-size: 15px;" id="signal"></i>
-        <i class="fa-solid fa-building-columns" style="position: absolute; color: black; top: 15px; left: 40px; opacity: 0; font-size: 15px;" id="bank"></i>
-        <p style="position: absolute; color: black; top: 15px; left: 60px; opacity: 0; font-size: 15px;" id="connectedBank">FINBONK България</p>
-        <img src="images/contactless.png" alt="Contactless is available" style="width: 15px; position: absolute; top: 15px; right: 15px; opacity: 0; font-size: 15px;" id="contactless">
-        <i class="fa-brands fa-apple-pay" style="font-size: 25px; position: absolute; top: 40px; right: 8px; opacity: 0; color: black;" id="apay"></i>
-        <i class="fa-brands fa-google-pay" style="font-size: 25px; position: absolute; top: 65px; right: 8px; opacity: 0; color: black;" id="gpay"></i>
-        <i class="fa-solid fa-download" style="position: absolute; color: black; top: 15px; right: 70px; opacity: 0; font-size: 17px;" id="cloud"></i>
-        <i class="fa-solid fa-money-bill-transfer" style="position: absolute; color: black; top: 16px; right: 40px; opacity: 0; font-size: 17px;" id="fundsPending"></i>
+        <p id="created"><span id="raide1">C</span><span id="raide2">r</span><span id="raide3">e</span><span id="raide4">a</span><span id="raide5">t</span><span id="raide6">e</span><span id="raide7">d</span> <span id="raide8">b</span><span id="raide9">y</span> <span id="raide10">M</span><span id="raide11">a</span><span id="raide12">t</span><span id="raide13">a</span><span id="raide14">s</span></p>
+        <p id="startAdvice">За да започнете транзакцията, натиснете <i class="fa-solid fa-check" style="color: green;"></i></p>
+        <i class="fa-regular fa-hourglass-half" id="loading"></i>
+        <p id="busyEN">Busy</p>
+        <p id="dirba">Работя</p>
+        <p id="ready">Готов</p>
+        <p id="amount">Въведи сума</p>
+        <input type="text" id="amountInput">
+        <p id="amountCurrency">Валута: Лв.</p>
+        <p id="insertCard">Поставете карта</p>
+        <p id="contactlessAvailable">Възможност за безконтактно плащане</p>
+        <p id="enterPin">Въведете PIN</p>
+        <p id="attemptsRemaining">Остават опити: 3</p>
+        <p id="approved">Одобрено</p>
+        <p id="removeCard">Премахнете картатa</p>
+        <p id="contactlessSuccess">Одобрено</p>
+        <input type="text" id="pinInput">
+        <i class="fa-solid fa-signal" id="signal"></i>
+        <i class="fa-solid fa-building-columns" id="bank"></i>
+        <p id="connectedBank">FINBONK България</p>
+        <img src="images/contactless.png" alt="Contactless is available" id="contactless">
+        <i class="fa-brands fa-apple-pay" id="applepay"></i>
+        <i class="fa-brands fa-google-pay" id="googlepay"></i>
+        <i class="fa-solid fa-cloud-arrow-down" id="cloud"></i>
+        <i class="fa-solid fa-money-bill-transfer" id="fundsPending"></i>
     </div>
     <div id="keyboard">
-        <div style="display: flex; justify-content: space-around; align-items: center; width: 100%;">
-            <div class="number" style="pointer-events: none;" id="1" onclick="vienas()">1<i class="fa-solid fa-voicemail" style="font-size: 15px; margin-left: 5px; margin-top: 5px; transition: 0.01s;"></i></div><div class="number" style="pointer-events: none; display: none;" id="1q" onclick="vienasQ()">1<i class="fa-solid fa-voicemail" style="font-size: 15px; margin-left: 5px; margin-top: 5px; transition: 0.01s;"></i></div>
-            <div class="number" style="pointer-events: none;" id="2" onclick="du()">2<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">abc</span></div><div class="number" style="pointer-events: none; display: none;" id="2q" onclick="duQ()">2<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">abc</span></div>
-            <div class="number" style="pointer-events: none;" id="3" onclick="trys()">3<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">def</span></div><div class="number" style="pointer-events: none; display: none;" id="3q" onclick="trysQ()">3<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">def</span></div>
+        <div class="organiseKeyboard">
+            <div class="number" id="1" onclick="vienas()">1<i class="fa-solid fa-voicemail"></i></div><div class="number" style="display: none;" id="1a" onclick="vienasA()">1<i class="fa-solid fa-voicemail"></i></div>
+            <div class="number" id="2" onclick="du()">2<span>abc</span></div><div class="number" style="display: none;" id="2a" onclick="duA()">2<span>abc</span></div>
+            <div class="number" id="3" onclick="trys()">3<span>def</span></div><div class="number" style="display: none;" id="3a" onclick="trysA()">3<span>def</span></div>
         </div>
-        <div style="display: flex; justify-content: space-around; align-items: center; width: 100%;">
-            <div class="number" style="pointer-events: none;" id="4" onclick="keturi()">4<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">ghi</span></div><div class="number" style="pointer-events: none; display: none;" id="4q" onclick="keturiQ()">4<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">ghi</span></div>
-            <div class="number" style="pointer-events: none;" id="5" onclick="penki()">5<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">jkl</span></div><div class="number" style="pointer-events: none; display: none;" id="5q" onclick="penkiQ()">5<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">jkl</span></div>
-            <div class="number" style="pointer-events: none;" id="6" onclick="sesi()">6<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">mon</span></div><div class="number" style="pointer-events: none; display: none;" id="6q" onclick="sesiQ()">6<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">mon</span></div>
+        <div class="organiseKeyboard">
+            <div class="number" id="4" onclick="keturi()">4<span>ghi</span></div><div class="number" style="display: none;" id="4a" onclick="keturiA()">4<span>ghi</span></div>
+            <div class="number" id="5" onclick="penki()">5<span>jkl</span></div><div class="number" style="display: none;" id="5a" onclick="penkiA()">5<span>jkl</span></div>
+            <div class="number" id="6" onclick="sesi()">6<span>mon</span></div><div class="number" style="display: none;" id="6a" onclick="sesiA()">6<span>mon</span></div>
         </div>
-        <div style="display: flex; justify-content: space-around; align-items: center; width: 100%;">
-            <div class="number" style="pointer-events: none;" id="7" onclick="septyni()">7<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">pqrs</span></div><div class="number" style="pointer-events: none; display: none;" id="7q" onclick="septyniQ()">7<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">pqrs</span></div>
-            <div class="number" style="pointer-events: none;" id="8" onclick="astuoni()">8<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">tuv</span></div><div class="number" style="pointer-events: none; display: none;" id="8q" onclick="astuoniQ()">8<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">tuv</span></div>
-            <div class="number" style="pointer-events: none;" id="9" onclick="devyni()">9<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">wxyz</span></div><div class="number" style="pointer-events: none; display: none;" id="9q" onclick="devyniQ()">9<span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">wxyz</span></div>
+        <div class="organiseKeyboard">
+            <div class="number" id="7" onclick="septyni()">7<span>pqrs</span></div><div class="number" style="display: none;" id="7a" onclick="septyniA()">7<span>pqrs</span></div>
+            <div class="number" id="8" onclick="astuoni()">8<span>tuv</span></div><div class="number" style="display: none;" id="8a" onclick="astuoniA()">8<span>tuv</span></div>
+            <div class="number" id="9" onclick="devyni()">9<span>wxyz</span></div><div class="number" style="display: none;" id="9a" onclick="devyniA()">9<span>wxyz</span></div>
         </div>
-        <div style="display: flex; justify-content: space-around; align-items: center; width: 100%;">
-            <div class="number" style="pointer-events: none;" id="x" onclick="trinti()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i><span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">can</span></div>
-            <div class="number" style="display: none; color: red; border-color: red;" id="x2" onclick="atsaukti()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i><span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">can</span></div>
-            <div class="number" style="display: none;" id="x3" onclick="atsauktiInsert()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i><span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">can</span></div>
-            <div class="number" style="display: none;" id="x4" onclick="atsauktiMokejima()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i><span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">can</span></div>
-            <div class="number" style="display: none; color: red; border-color: red;" id="x5" onclick="trintiPin()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i><span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">can</span></div>
-            <div class="number" style="pointer-events: none;" id="0" onclick="nulis()">0<i class="fa-solid fa-plus" style="font-size: 15px; margin-left: 5px; margin-top: 2px; transition: 0.01s;"></i></div><div class="number" style="pointer-events: none; display: none;" id="0q" onclick="nulisQ()">0<i class="fa-solid fa-plus" style="font-size: 15px; margin-left: 5px; margin-top: 2px; transition: 0.01s;"></i></div>
-            <div class="number" style="pointer-events: none;" id="check" onclick="startTransaction()"><i class="fa-solid fa-check" style="transition: 0.01s;"></i><span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">cfm</span></div>
-            <div class="number" style="pointer-events: none; display: none;" id="check2" onclick="openTransaction()"><i class="fa-solid fa-check" style="transition: 0.01s;"></i><span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">cfm</span></div>
-            <div class="number" style="pointer-events: none; display: none;" id="check3" onclick="baigtiMokejima()"><i class="fa-solid fa-check" style="transition: 0.01s;"></i><span style="font-size: 15px; margin-left: 5px; transition: 0.01s;">cfm</span></div>
+        <div class="organiseKeyboard">
+            <div class="number" id="x" onclick="trinti()"><i class="fa-solid fa-xmark" style="transition: 0.01s;"></i><span>can</span></div>
+            <div class="number" style="display: none; pointer-events: all; color: red; border-color: red;" id="x2" onclick="atsaukti()"><i class="fa-solid fa-xmark"></i><span>can</span></div>
+            <div class="number" style="display: none; pointer-events: all;" id="x3" onclick="atsauktiInsert()"><i class="fa-solid fa-xmark"></i><span>can</span></div>
+            <div class="number" style="display: none; pointer-events: all;" id="x4" onclick="atsauktiMokejima()"><i class="fa-solid fa-xmark"></i><span>can</span></div>
+            <div class="number" style="display: none; pointer-events: all; color: red; border-color: red;" id="x5" onclick="trintiPin()"><i class="fa-solid fa-xmark"></i><span>can</span></div>
+            <div class="number" id="0" onclick="nulis()">0<i class="fa-solid fa-plus"></i></div><div class="number" style="display: none;" id="0a" onclick="nulisA()">0<i class="fa-solid fa-plus"></i></div>
+            <div class="number" id="check" onclick="startTransaction()"><i class="fa-solid fa-check"></i><span>cfm</span></div>
+            <div class="number" style="display: none;" id="check2" onclick="openTransaction()"><i class="fa-solid fa-check"></i><span>cfm</span></div>
+            <div class="number" style="display: none;" id="check3" onclick="baigtiMokejima()"><i class="fa-solid fa-check"></i><span>cfm</span></div>
         </div>
     </div>
-    <div style="width: 100%; height: 50px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 1; display: none;" id="insertCardComplete" onclick="cardInserted()"></div>
-    <div style="width: 100%; height: 50px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 1; display: none;" id="removeCardComplete" onclick="cardRemoved()"></div>
+    <div id="insertCardComplete" onclick="cardInserted()"></div>
+    <div id="removeCardComplete" onclick="cardRemoved()"></div>
+
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
         // Disable right-click
@@ -657,7 +982,7 @@
             setTimeout(() => {  
                 document.getElementById("insertCard").style.opacity = "1";
                 document.getElementById("amountInput").style.opacity = "1";
-                document.getElementById("amountInput").value = document.getElementById("amountInput").value + ' €';
+                document.getElementById("amountInput").value = document.getElementById("amountInput").value + ' Лв.';
             }, 5400);
             setTimeout(() => {  
                 document.getElementById("x3").style.display = "flex";
@@ -665,8 +990,8 @@
             }, 6350);
             setTimeout(() => {  
                 document.getElementById("contactlessAvailable").style.opacity = "1";
-                document.getElementById("gpay").style.opacity = "1";
-                document.getElementById("apay").style.opacity = "1";
+                document.getElementById("applepay").style.opacity = "1";
+                document.getElementById("googlepay").style.opacity = "1";
                 document.getElementById("insertCardComplete").style.display = "block";
                 document.getElementById("screen").style.pointerEvents = "all";
                 document.getElementById('repeat').currentTime = 0;
@@ -675,7 +1000,7 @@
                 document.getElementById("x3").style.borderColor = "red";
             }, 6400);
         }
-        var audio = document.getElementById("repeat");
+        let audio = document.getElementById("repeat");
         audio.onended = function() {
             setTimeout(() => {  
                 document.getElementById('repeat').muted = false;
@@ -705,8 +1030,8 @@
                 document.getElementById("x3").style.borderColor = "red";
                 document.getElementById("x3").style.transition = "0.3s";
                 document.getElementById("contactlessAvailable").style.opacity = "0";
-                document.getElementById("gpay").style.opacity = "0";
-                document.getElementById("apay").style.opacity = "0";
+                document.getElementById("applepay").style.opacity = "0";
+                document.getElementById("googlepay").style.opacity = "0";
                 document.getElementById("insertCard").style.opacity = "0";
                 document.getElementById("amountInput").style.opacity = "0";
                 document.getElementById("repeat").pause();
@@ -767,8 +1092,8 @@
             setTimeout(() => {  
                 document.getElementById("insertCard").style.opacity = "0";
                 document.getElementById("contactlessAvailable").style.opacity = "0";
-                document.getElementById("gpay").style.opacity = "0";
-                document.getElementById("apay").style.opacity = "0";
+                document.getElementById("applepay").style.opacity = "0";
+                document.getElementById("googlepay").style.opacity = "0";
                 document.getElementById("contactless").style.opacity = "0";
                 document.getElementById("amountInput").style.opacity = "0";
                 document.getElementById("repeat").pause();
@@ -791,25 +1116,25 @@
                 document.getElementById("check2").style.display = "none";
                 document.getElementById("check3").style.display = "flex";
                 document.getElementById("1").style.display = "none";
-                document.getElementById("1q").style.display = "flex";
+                document.getElementById("1a").style.display = "flex";
                 document.getElementById("2").style.display = "none";
-                document.getElementById("2q").style.display = "flex";
+                document.getElementById("2a").style.display = "flex";
                 document.getElementById("3").style.display = "none";
-                document.getElementById("3q").style.display = "flex";
+                document.getElementById("3a").style.display = "flex";
                 document.getElementById("4").style.display = "none";
-                document.getElementById("4q").style.display = "flex";
+                document.getElementById("4a").style.display = "flex";
                 document.getElementById("5").style.display = "none";
-                document.getElementById("5q").style.display = "flex";
+                document.getElementById("5a").style.display = "flex";
                 document.getElementById("6").style.display = "none";
-                document.getElementById("6q").style.display = "flex";
+                document.getElementById("6a").style.display = "flex";
                 document.getElementById("7").style.display = "none";
-                document.getElementById("7q").style.display = "flex";
+                document.getElementById("7a").style.display = "flex";
                 document.getElementById("8").style.display = "none";
-                document.getElementById("8q").style.display = "flex";
+                document.getElementById("8a").style.display = "flex";
                 document.getElementById("9").style.display = "none";
-                document.getElementById("9q").style.display = "flex";
+                document.getElementById("9a").style.display = "flex";
                 document.getElementById("0").style.display = "none";
-                document.getElementById("0q").style.display = "flex";
+                document.getElementById("0a").style.display = "flex";
             }, 300);
             setTimeout(() => {  
                 document.getElementById("repeat").pause();
@@ -836,36 +1161,36 @@
                 document.getElementById("attemptsRemaining").style.opacity = "1";
                 document.getElementById("x4").style.borderColor = "red";
                 document.getElementById("x4").style.color = "red";
-                document.getElementById("1q").style.borderColor = "white";
-                document.getElementById("1q").style.color = "white";
-                document.getElementById("1q").style.pointerEvents = "all";
-                document.getElementById("2q").style.borderColor = "white";
-                document.getElementById("2q").style.color = "white";
-                document.getElementById("2q").style.pointerEvents = "all";
-                document.getElementById("3q").style.borderColor = "white";
-                document.getElementById("3q").style.color = "white";
-                document.getElementById("3q").style.pointerEvents = "all";
-                document.getElementById("4q").style.borderColor = "white";
-                document.getElementById("4q").style.color = "white";
-                document.getElementById("4q").style.pointerEvents = "all";
-                document.getElementById("5q").style.borderColor = "white";
-                document.getElementById("5q").style.color = "white";
-                document.getElementById("5q").style.pointerEvents = "all";
-                document.getElementById("6q").style.borderColor = "white";
-                document.getElementById("6q").style.color = "white";
-                document.getElementById("6q").style.pointerEvents = "all";
-                document.getElementById("7q").style.borderColor = "white";
-                document.getElementById("7q").style.color = "white";
-                document.getElementById("7q").style.pointerEvents = "all";
-                document.getElementById("8q").style.borderColor = "white";
-                document.getElementById("8q").style.color = "white";
-                document.getElementById("8q").style.pointerEvents = "all";
-                document.getElementById("9q").style.borderColor = "white";
-                document.getElementById("9q").style.color = "white";
-                document.getElementById("9q").style.pointerEvents = "all";
-                document.getElementById("0q").style.borderColor = "white";
-                document.getElementById("0q").style.color = "white";
-                document.getElementById("0q").style.pointerEvents = "all";
+                document.getElementById("1a").style.borderColor = "white";
+                document.getElementById("1a").style.color = "white";
+                document.getElementById("1a").style.pointerEvents = "all";
+                document.getElementById("2a").style.borderColor = "white";
+                document.getElementById("2a").style.color = "white";
+                document.getElementById("2a").style.pointerEvents = "all";
+                document.getElementById("3a").style.borderColor = "white";
+                document.getElementById("3a").style.color = "white";
+                document.getElementById("3a").style.pointerEvents = "all";
+                document.getElementById("4a").style.borderColor = "white";
+                document.getElementById("4a").style.color = "white";
+                document.getElementById("4a").style.pointerEvents = "all";
+                document.getElementById("5a").style.borderColor = "white";
+                document.getElementById("5a").style.color = "white";
+                document.getElementById("5a").style.pointerEvents = "all";
+                document.getElementById("6a").style.borderColor = "white";
+                document.getElementById("6a").style.color = "white";
+                document.getElementById("6a").style.pointerEvents = "all";
+                document.getElementById("7a").style.borderColor = "white";
+                document.getElementById("7a").style.color = "white";
+                document.getElementById("7a").style.pointerEvents = "all";
+                document.getElementById("8a").style.borderColor = "white";
+                document.getElementById("8a").style.color = "white";
+                document.getElementById("8a").style.pointerEvents = "all";
+                document.getElementById("9a").style.borderColor = "white";
+                document.getElementById("9a").style.color = "white";
+                document.getElementById("9a").style.pointerEvents = "all";
+                document.getElementById("0a").style.borderColor = "white";
+                document.getElementById("0a").style.color = "white";
+                document.getElementById("0a").style.pointerEvents = "all";
             }, 6400);
         }
         function vienas() {
@@ -1052,7 +1377,7 @@
             document.getElementById("x2").style.display = "none";
             document.getElementById("0").style.borderColor = "darkslategrey";
             document.getElementById("0").style.transition = "none";
-            document.getElementById("amountInput").value = document.getElementById("amountInput").value + 0;
+            document.getElementById("amountInput").value = document.getElementById("amountInput").value + '0';
             maxAmount();
             setTimeout(() => {  
                 document.getElementById("0").style.borderColor = "white";
@@ -1081,7 +1406,7 @@
             }, 400);
         }
         function maxAmount() {
-            if(document.getElementById("amountInput").value.length == "10")
+            if(document.getElementById("amountInput").value.length === "10")
             {
                 document.getElementById("1").style.pointerEvents = "none";
                 document.getElementById("2").style.pointerEvents = "none";
@@ -1256,36 +1581,36 @@
             setTimeout(() => {  
                 document.getElementById("x4").style.borderColor = "darkslategrey";
                 document.getElementById("x4").style.color = "darkslategrey";
-                document.getElementById("1q").style.borderColor = "darkslategrey";
-                document.getElementById("1q").style.color = "darkslategrey";
-                document.getElementById("1q").style.pointerEvents = "none";
-                document.getElementById("2q").style.borderColor = "darkslategrey";
-                document.getElementById("2q").style.color = "darkslategrey";
-                document.getElementById("2q").style.pointerEvents = "none";
-                document.getElementById("3q").style.borderColor = "darkslategrey";
-                document.getElementById("3q").style.color = "darkslategrey";
-                document.getElementById("3q").style.pointerEvents = "none";
-                document.getElementById("4q").style.borderColor = "darkslategrey";
-                document.getElementById("4q").style.color = "darkslategrey";
-                document.getElementById("4q").style.pointerEvents = "none";
-                document.getElementById("5q").style.borderColor = "darkslategrey";
-                document.getElementById("5q").style.color = "darkslategrey";
-                document.getElementById("5q").style.pointerEvents = "none";
-                document.getElementById("6q").style.borderColor = "darkslategrey";
-                document.getElementById("6q").style.color = "darkslategrey";
-                document.getElementById("6q").style.pointerEvents = "none";
-                document.getElementById("7q").style.borderColor = "darkslategrey";
-                document.getElementById("7q").style.color = "darkslategrey";
-                document.getElementById("7q").style.pointerEvents = "none";
-                document.getElementById("8q").style.borderColor = "darkslategrey";
-                document.getElementById("8q").style.color = "darkslategrey";
-                document.getElementById("8q").style.pointerEvents = "none";
-                document.getElementById("9q").style.borderColor = "darkslategrey";
-                document.getElementById("9q").style.color = "darkslategrey";
-                document.getElementById("9q").style.pointerEvents = "none";
-                document.getElementById("0q").style.borderColor = "darkslategrey";
-                document.getElementById("0q").style.color = "darkslategrey";
-                document.getElementById("0q").style.pointerEvents = "none";
+                document.getElementById("1a").style.borderColor = "darkslategrey";
+                document.getElementById("1a").style.color = "darkslategrey";
+                document.getElementById("1a").style.pointerEvents = "none";
+                document.getElementById("2a").style.borderColor = "darkslategrey";
+                document.getElementById("2a").style.color = "darkslategrey";
+                document.getElementById("2a").style.pointerEvents = "none";
+                document.getElementById("3a").style.borderColor = "darkslategrey";
+                document.getElementById("3a").style.color = "darkslategrey";
+                document.getElementById("3a").style.pointerEvents = "none";
+                document.getElementById("4a").style.borderColor = "darkslategrey";
+                document.getElementById("4a").style.color = "darkslategrey";
+                document.getElementById("4a").style.pointerEvents = "none";
+                document.getElementById("5a").style.borderColor = "darkslategrey";
+                document.getElementById("5a").style.color = "darkslategrey";
+                document.getElementById("5a").style.pointerEvents = "none";
+                document.getElementById("6a").style.borderColor = "darkslategrey";
+                document.getElementById("6a").style.color = "darkslategrey";
+                document.getElementById("6a").style.pointerEvents = "none";
+                document.getElementById("7a").style.borderColor = "darkslategrey";
+                document.getElementById("7a").style.color = "darkslategrey";
+                document.getElementById("7a").style.pointerEvents = "none";
+                document.getElementById("8a").style.borderColor = "darkslategrey";
+                document.getElementById("8a").style.color = "darkslategrey";
+                document.getElementById("8a").style.pointerEvents = "none";
+                document.getElementById("9a").style.borderColor = "darkslategrey";
+                document.getElementById("9a").style.color = "darkslategrey";
+                document.getElementById("9a").style.pointerEvents = "none";
+                document.getElementById("0a").style.borderColor = "darkslategrey";
+                document.getElementById("0a").style.color = "darkslategrey";
+                document.getElementById("0a").style.pointerEvents = "none";
                 document.getElementById("dirba").style.opacity = "1";
                 document.getElementById("loading").style.opacity = "1";
             }, 250);
@@ -1294,25 +1619,25 @@
                 document.getElementById("x").style.display = "flex";
                 document.getElementById("x4").style.display = "none";
                 document.getElementById("x4").style.pointerEvents = "all";
-                document.getElementById("1q").style.display = "none";
+                document.getElementById("1a").style.display = "none";
                 document.getElementById("1").style.display = "flex";
-                document.getElementById("2q").style.display = "none";
+                document.getElementById("2a").style.display = "none";
                 document.getElementById("2").style.display = "flex";
-                document.getElementById("3q").style.display = "none";
+                document.getElementById("3a").style.display = "none";
                 document.getElementById("3").style.display = "flex";
-                document.getElementById("4q").style.display = "none";
+                document.getElementById("4a").style.display = "none";
                 document.getElementById("4").style.display = "flex";
-                document.getElementById("5q").style.display = "none";
+                document.getElementById("5a").style.display = "none";
                 document.getElementById("5").style.display = "flex";
-                document.getElementById("6q").style.display = "none";
+                document.getElementById("6a").style.display = "none";
                 document.getElementById("6").style.display = "flex";
-                document.getElementById("7q").style.display = "none";
+                document.getElementById("7a").style.display = "none";
                 document.getElementById("7").style.display = "flex";
-                document.getElementById("8q").style.display = "none";
+                document.getElementById("8a").style.display = "none";
                 document.getElementById("8").style.display = "flex";
-                document.getElementById("9q").style.display = "none";
+                document.getElementById("9a").style.display = "none";
                 document.getElementById("9").style.display = "flex";
-                document.getElementById("0q").style.display = "none";
+                document.getElementById("0a").style.display = "none";
                 document.getElementById("0").style.display = "flex";
             }, 400);
             setTimeout(() => {  
@@ -1329,175 +1654,175 @@
                 document.getElementById("check").style.color = "green";
             }, 4400);
         }
-        function vienasQ() {
+        function vienasA() {
             document.getElementById('click').muted = false;
             document.getElementById("click").play();
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
             document.getElementById("x4").style.display = "none";
-            document.getElementById("1q").style.borderColor = "darkslategrey";
-            document.getElementById("1q").style.transition = "none";
+            document.getElementById("1a").style.borderColor = "darkslategrey";
+            document.getElementById("1a").style.transition = "none";
             document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
             hideKeyboardPin();
             confirmCheckShow();
             setTimeout(() => {  
-                document.getElementById("1q").style.borderColor = "white";
-                document.getElementById("1q").style.transition = "0.3s";
+                document.getElementById("1a").style.borderColor = "white";
+                document.getElementById("1a").style.transition = "0.3s";
             }, 100);
         }
-        function duQ() {
+        function duA() {
             document.getElementById('click').muted = false;
             document.getElementById("click").play();
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
             document.getElementById("x4").style.display = "none";
-            document.getElementById("2q").style.borderColor = "darkslategrey";
-            document.getElementById("2q").style.transition = "none";
+            document.getElementById("2a").style.borderColor = "darkslategrey";
+            document.getElementById("2a").style.transition = "none";
             document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
             hideKeyboardPin();
             confirmCheckShow();
             setTimeout(() => {  
-                document.getElementById("2q").style.borderColor = "white";
-                document.getElementById("2q").style.transition = "0.3s";
+                document.getElementById("2a").style.borderColor = "white";
+                document.getElementById("2a").style.transition = "0.3s";
             }, 100);
         }
-        function trysQ() {
+        function trysA() {
             document.getElementById('click').muted = false;
             document.getElementById("click").play();
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
             document.getElementById("x4").style.display = "none";
-            document.getElementById("3q").style.borderColor = "darkslategrey";
-            document.getElementById("3q").style.transition = "none";
+            document.getElementById("3a").style.borderColor = "darkslategrey";
+            document.getElementById("3a").style.transition = "none";
             document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
             hideKeyboardPin();
             confirmCheckShow();
             setTimeout(() => {  
-                document.getElementById("3q").style.borderColor = "white";
-                document.getElementById("3q").style.transition = "0.3s";
+                document.getElementById("3a").style.borderColor = "white";
+                document.getElementById("3a").style.transition = "0.3s";
             }, 100);
         }
-        function keturiQ() {
+        function keturiA() {
             document.getElementById('click').muted = false;
             document.getElementById("click").play();
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
             document.getElementById("x4").style.display = "none";
-            document.getElementById("4q").style.borderColor = "darkslategrey";
-            document.getElementById("4q").style.transition = "none";
+            document.getElementById("4a").style.borderColor = "darkslategrey";
+            document.getElementById("4a").style.transition = "none";
             document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
             hideKeyboardPin();
             confirmCheckShow();
             setTimeout(() => {  
-                document.getElementById("4q").style.borderColor = "white";
-                document.getElementById("4q").style.transition = "0.3s";
+                document.getElementById("4a").style.borderColor = "white";
+                document.getElementById("4a").style.transition = "0.3s";
             }, 100);
         }
-        function penkiQ() {
+        function penkiA() {
             document.getElementById('click').muted = false;
             document.getElementById("click").play();
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
             document.getElementById("x4").style.display = "none";
-            document.getElementById("5q").style.borderColor = "darkslategrey";
-            document.getElementById("5q").style.transition = "none";
+            document.getElementById("5a").style.borderColor = "darkslategrey";
+            document.getElementById("5a").style.transition = "none";
             document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
             hideKeyboardPin();
             confirmCheckShow();
             setTimeout(() => {  
-                document.getElementById("5q").style.borderColor = "white";
-                document.getElementById("5q").style.transition = "0.3s";
+                document.getElementById("5a").style.borderColor = "white";
+                document.getElementById("5a").style.transition = "0.3s";
             }, 100);
         }
-        function sesiQ() {
+        function sesiA() {
             document.getElementById('click').muted = false;
             document.getElementById("click").play();
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
             document.getElementById("x4").style.display = "none";
-            document.getElementById("6q").style.borderColor = "darkslategrey";
-            document.getElementById("6q").style.transition = "none";
+            document.getElementById("6a").style.borderColor = "darkslategrey";
+            document.getElementById("6a").style.transition = "none";
             document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
             hideKeyboardPin();
             confirmCheckShow();
             setTimeout(() => {  
-                document.getElementById("6q").style.borderColor = "white";
-                document.getElementById("6q").style.transition = "0.3s";
+                document.getElementById("6a").style.borderColor = "white";
+                document.getElementById("6a").style.transition = "0.3s";
             }, 100);
         }
-        function septyniQ() {
+        function septyniA() {
             document.getElementById('click').muted = false;
             document.getElementById("click").play();
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
             document.getElementById("x4").style.display = "none";
-            document.getElementById("7q").style.borderColor = "darkslategrey";
-            document.getElementById("7q").style.transition = "none";
+            document.getElementById("7a").style.borderColor = "darkslategrey";
+            document.getElementById("7a").style.transition = "none";
             document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
             hideKeyboardPin();
             confirmCheckShow();
             setTimeout(() => {  
-                document.getElementById("7q").style.borderColor = "white";
-                document.getElementById("7q").style.transition = "0.3s";
+                document.getElementById("7a").style.borderColor = "white";
+                document.getElementById("7a").style.transition = "0.3s";
             }, 100);
         }
-        function astuoniQ() {
+        function astuoniA() {
             document.getElementById('click').muted = false;
             document.getElementById("click").play();
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
             document.getElementById("x4").style.display = "none";
-            document.getElementById("8q").style.borderColor = "darkslategrey";
-            document.getElementById("8q").style.transition = "none";
+            document.getElementById("8a").style.borderColor = "darkslategrey";
+            document.getElementById("8a").style.transition = "none";
             document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
             hideKeyboardPin();
             confirmCheckShow();
             setTimeout(() => {  
-                document.getElementById("8q").style.borderColor = "white";
-                document.getElementById("8q").style.transition = "0.3s";
+                document.getElementById("8a").style.borderColor = "white";
+                document.getElementById("8a").style.transition = "0.3s";
             }, 100);
         }
-        function devyniQ() {
+        function devyniA() {
             document.getElementById('click').muted = false;
             document.getElementById("click").play();
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
             document.getElementById("x4").style.display = "none";
-            document.getElementById("9q").style.borderColor = "darkslategrey";
-            document.getElementById("9q").style.transition = "none";
+            document.getElementById("9a").style.borderColor = "darkslategrey";
+            document.getElementById("9a").style.transition = "none";
             document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
             hideKeyboardPin();
             confirmCheckShow();
             setTimeout(() => {  
-                document.getElementById("9q").style.borderColor = "white";
-                document.getElementById("9q").style.transition = "0.3s";
+                document.getElementById("9a").style.borderColor = "white";
+                document.getElementById("9a").style.transition = "0.3s";
             }, 100);
         }
 
-        function nulisQ() {
+        function nulisA() {
             document.getElementById('click').muted = false;
             document.getElementById("click").play();
             document.getElementById('click').currentTime = 0;
             document.getElementById("x5").style.display = "flex";
             document.getElementById("x5").style.pointerEvents = "all";
             document.getElementById("x4").style.display = "none";
-            document.getElementById("0q").style.borderColor = "darkslategrey";
-            document.getElementById("0q").style.transition = "none";
+            document.getElementById("0a").style.borderColor = "darkslategrey";
+            document.getElementById("0a").style.transition = "none";
             document.getElementById("pinInput").value = document.getElementById("pinInput").value + '*';
             hideKeyboardPin();
             confirmCheckShow();
             setTimeout(() => {  
-                document.getElementById("0q").style.borderColor = "white";
-                document.getElementById("0q").style.transition = "0.3s";
+                document.getElementById("0a").style.borderColor = "white";
+                document.getElementById("0a").style.transition = "0.3s";
             }, 100);
         }
         function trintiPin() {
@@ -1520,77 +1845,77 @@
             }, 400);
         }
         function hideKeyboardPin() {
-            if (document.getElementById("pinInput").value == "******") {
-                document.getElementById("1q").style.pointerEvents = "none";
-                document.getElementById("2q").style.pointerEvents = "none";
-                document.getElementById("3q").style.pointerEvents = "none";
-                document.getElementById("4q").style.pointerEvents = "none";
-                document.getElementById("5q").style.pointerEvents = "none";
-                document.getElementById("6q").style.pointerEvents = "none";
-                document.getElementById("7q").style.pointerEvents = "none";
-                document.getElementById("8q").style.pointerEvents = "none";
-                document.getElementById("9q").style.pointerEvents = "none";
-                document.getElementById("0q").style.pointerEvents = "none";
+            if (document.getElementById("pinInput").value === "******") {
+                document.getElementById("1a").style.pointerEvents = "none";
+                document.getElementById("2a").style.pointerEvents = "none";
+                document.getElementById("3a").style.pointerEvents = "none";
+                document.getElementById("4a").style.pointerEvents = "none";
+                document.getElementById("5a").style.pointerEvents = "none";
+                document.getElementById("6a").style.pointerEvents = "none";
+                document.getElementById("7a").style.pointerEvents = "none";
+                document.getElementById("8a").style.pointerEvents = "none";
+                document.getElementById("9a").style.pointerEvents = "none";
+                document.getElementById("0a").style.pointerEvents = "none";
                 setTimeout(() => {  
-                    document.getElementById("1q").style.borderColor = "darkslategrey";
-                    document.getElementById("1q").style.color = "darkslategrey";
-                    document.getElementById("2q").style.borderColor = "darkslategrey";
-                    document.getElementById("2q").style.color = "darkslategrey";
-                    document.getElementById("3q").style.borderColor = "darkslategrey";
-                    document.getElementById("3q").style.color = "darkslategrey";
-                    document.getElementById("4q").style.borderColor = "darkslategrey";
-                    document.getElementById("4q").style.color = "darkslategrey";
-                    document.getElementById("5q").style.borderColor = "darkslategrey";
-                    document.getElementById("5q").style.color = "darkslategrey";
-                    document.getElementById("6q").style.borderColor = "darkslategrey";
-                    document.getElementById("6q").style.color = "darkslategrey";
-                    document.getElementById("7q").style.borderColor = "darkslategrey";
-                    document.getElementById("7q").style.color = "darkslategrey";
-                    document.getElementById("8q").style.borderColor = "darkslategrey";
-                    document.getElementById("8q").style.color = "darkslategrey";
-                    document.getElementById("9q").style.borderColor = "darkslategrey";
-                    document.getElementById("9q").style.color = "darkslategrey";
-                    document.getElementById("0q").style.borderColor = "darkslategrey";
-                    document.getElementById("0q").style.color = "darkslategrey";
+                    document.getElementById("1a").style.borderColor = "darkslategrey";
+                    document.getElementById("1a").style.color = "darkslategrey";
+                    document.getElementById("2a").style.borderColor = "darkslategrey";
+                    document.getElementById("2a").style.color = "darkslategrey";
+                    document.getElementById("3a").style.borderColor = "darkslategrey";
+                    document.getElementById("3a").style.color = "darkslategrey";
+                    document.getElementById("4a").style.borderColor = "darkslategrey";
+                    document.getElementById("4a").style.color = "darkslategrey";
+                    document.getElementById("5a").style.borderColor = "darkslategrey";
+                    document.getElementById("5a").style.color = "darkslategrey";
+                    document.getElementById("6a").style.borderColor = "darkslategrey";
+                    document.getElementById("6a").style.color = "darkslategrey";
+                    document.getElementById("7a").style.borderColor = "darkslategrey";
+                    document.getElementById("7a").style.color = "darkslategrey";
+                    document.getElementById("8a").style.borderColor = "darkslategrey";
+                    document.getElementById("8a").style.color = "darkslategrey";
+                    document.getElementById("9a").style.borderColor = "darkslategrey";
+                    document.getElementById("9a").style.color = "darkslategrey";
+                    document.getElementById("0a").style.borderColor = "darkslategrey";
+                    document.getElementById("0a").style.color = "darkslategrey";
                 }, 101);
             }
             else{
-                document.getElementById("1q").style.pointerEvents = "all";
-                document.getElementById("2q").style.pointerEvents = "all";
-                document.getElementById("3q").style.pointerEvents = "all";
-                document.getElementById("4q").style.pointerEvents = "all";
-                document.getElementById("5q").style.pointerEvents = "all";
-                document.getElementById("6q").style.pointerEvents = "all";
-                document.getElementById("7q").style.pointerEvents = "all";
-                document.getElementById("8q").style.pointerEvents = "all";
-                document.getElementById("9q").style.pointerEvents = "all";
-                document.getElementById("0q").style.pointerEvents = "all";
+                document.getElementById("1a").style.pointerEvents = "all";
+                document.getElementById("2a").style.pointerEvents = "all";
+                document.getElementById("3a").style.pointerEvents = "all";
+                document.getElementById("4a").style.pointerEvents = "all";
+                document.getElementById("5a").style.pointerEvents = "all";
+                document.getElementById("6a").style.pointerEvents = "all";
+                document.getElementById("7a").style.pointerEvents = "all";
+                document.getElementById("8a").style.pointerEvents = "all";
+                document.getElementById("9a").style.pointerEvents = "all";
+                document.getElementById("0a").style.pointerEvents = "all";
                 setTimeout(() => {  
-                    document.getElementById("1q").style.borderColor = "white";
-                    document.getElementById("1q").style.color = "white";
-                    document.getElementById("2q").style.borderColor = "white";
-                    document.getElementById("2q").style.color = "white";
-                    document.getElementById("3q").style.borderColor = "white";
-                    document.getElementById("3q").style.color = "white";
-                    document.getElementById("4q").style.borderColor = "white";
-                    document.getElementById("4q").style.color = "white";
-                    document.getElementById("5q").style.borderColor = "white";
-                    document.getElementById("5q").style.color = "white";
-                    document.getElementById("6q").style.borderColor = "white";
-                    document.getElementById("6q").style.color = "white";
-                    document.getElementById("7q").style.borderColor = "white";
-                    document.getElementById("7q").style.color = "white";
-                    document.getElementById("8q").style.borderColor = "white";
-                    document.getElementById("8q").style.color = "white";
-                    document.getElementById("9q").style.borderColor = "white";
-                    document.getElementById("9q").style.color = "white";
-                    document.getElementById("0q").style.borderColor = "white";
-                    document.getElementById("0q").style.color = "white";
+                    document.getElementById("1a").style.borderColor = "white";
+                    document.getElementById("1a").style.color = "white";
+                    document.getElementById("2a").style.borderColor = "white";
+                    document.getElementById("2a").style.color = "white";
+                    document.getElementById("3a").style.borderColor = "white";
+                    document.getElementById("3a").style.color = "white";
+                    document.getElementById("4a").style.borderColor = "white";
+                    document.getElementById("4a").style.color = "white";
+                    document.getElementById("5a").style.borderColor = "white";
+                    document.getElementById("5a").style.color = "white";
+                    document.getElementById("6a").style.borderColor = "white";
+                    document.getElementById("6a").style.color = "white";
+                    document.getElementById("7a").style.borderColor = "white";
+                    document.getElementById("7a").style.color = "white";
+                    document.getElementById("8a").style.borderColor = "white";
+                    document.getElementById("8a").style.color = "white";
+                    document.getElementById("9a").style.borderColor = "white";
+                    document.getElementById("9a").style.color = "white";
+                    document.getElementById("0a").style.borderColor = "white";
+                    document.getElementById("0a").style.color = "white";
                 }, 101);
             }
         }
         function confirmCheckShow() {
-            if (document.getElementById("pinInput").value == "****" || document.getElementById("pinInput").value == "*****" || document.getElementById("pinInput").value == "******") {
+            if (document.getElementById("pinInput").value === "****" || document.getElementById("pinInput").value === "*****" || document.getElementById("pinInput").value === "******") {
                 document.getElementById("check3").style.pointerEvents = "all";
                 document.getElementById("check3").style.color = "green";
                 document.getElementById("check3").style.borderColor = "green";
@@ -1630,36 +1955,36 @@
                 document.getElementById("x5").style.color = "darkslategrey";
                 document.getElementById("check3").style.borderColor = "darkslategrey";
                 document.getElementById("check3").style.color = "darkslategrey";
-                document.getElementById("1q").style.borderColor = "darkslategrey";
-                document.getElementById("1q").style.color = "darkslategrey";
-                document.getElementById("1q").style.pointerEvents = "none";
-                document.getElementById("2q").style.borderColor = "darkslategrey";
-                document.getElementById("2q").style.color = "darkslategrey";
-                document.getElementById("2q").style.pointerEvents = "none";
-                document.getElementById("3q").style.borderColor = "darkslategrey";
-                document.getElementById("3q").style.color = "darkslategrey";
-                document.getElementById("3q").style.pointerEvents = "none";
-                document.getElementById("4q").style.borderColor = "darkslategrey";
-                document.getElementById("4q").style.color = "darkslategrey";
-                document.getElementById("4q").style.pointerEvents = "none";
-                document.getElementById("5q").style.borderColor = "darkslategrey";
-                document.getElementById("5q").style.color = "darkslategrey";
-                document.getElementById("5q").style.pointerEvents = "none";
-                document.getElementById("6q").style.borderColor = "darkslategrey";
-                document.getElementById("6q").style.color = "darkslategrey";
-                document.getElementById("6q").style.pointerEvents = "none";
-                document.getElementById("7q").style.borderColor = "darkslategrey";
-                document.getElementById("7q").style.color = "darkslategrey";
-                document.getElementById("7q").style.pointerEvents = "none";
-                document.getElementById("8q").style.borderColor = "darkslategrey";
-                document.getElementById("8q").style.color = "darkslategrey";
-                document.getElementById("8q").style.pointerEvents = "none";
-                document.getElementById("9q").style.borderColor = "darkslategrey";
-                document.getElementById("9q").style.color = "darkslategrey";
-                document.getElementById("9q").style.pointerEvents = "none";
-                document.getElementById("0q").style.borderColor = "darkslategrey";
-                document.getElementById("0q").style.color = "darkslategrey";
-                document.getElementById("0q").style.pointerEvents = "none";
+                document.getElementById("1a").style.borderColor = "darkslategrey";
+                document.getElementById("1a").style.color = "darkslategrey";
+                document.getElementById("1a").style.pointerEvents = "none";
+                document.getElementById("2a").style.borderColor = "darkslategrey";
+                document.getElementById("2a").style.color = "darkslategrey";
+                document.getElementById("2a").style.pointerEvents = "none";
+                document.getElementById("3a").style.borderColor = "darkslategrey";
+                document.getElementById("3a").style.color = "darkslategrey";
+                document.getElementById("3a").style.pointerEvents = "none";
+                document.getElementById("4a").style.borderColor = "darkslategrey";
+                document.getElementById("4a").style.color = "darkslategrey";
+                document.getElementById("4a").style.pointerEvents = "none";
+                document.getElementById("5a").style.borderColor = "darkslategrey";
+                document.getElementById("5a").style.color = "darkslategrey";
+                document.getElementById("5a").style.pointerEvents = "none";
+                document.getElementById("6a").style.borderColor = "darkslategrey";
+                document.getElementById("6a").style.color = "darkslategrey";
+                document.getElementById("6a").style.pointerEvents = "none";
+                document.getElementById("7a").style.borderColor = "darkslategrey";
+                document.getElementById("7a").style.color = "darkslategrey";
+                document.getElementById("7a").style.pointerEvents = "none";
+                document.getElementById("8a").style.borderColor = "darkslategrey";
+                document.getElementById("8a").style.color = "darkslategrey";
+                document.getElementById("8a").style.pointerEvents = "none";
+                document.getElementById("9a").style.borderColor = "darkslategrey";
+                document.getElementById("9a").style.color = "darkslategrey";
+                document.getElementById("9a").style.pointerEvents = "none";
+                document.getElementById("0a").style.borderColor = "darkslategrey";
+                document.getElementById("0a").style.color = "darkslategrey";
+                document.getElementById("0a").style.pointerEvents = "none";
                 document.getElementById("dirba").style.opacity = "1";
                 document.getElementById("loading").style.opacity = "1";
             }, 250);
@@ -1681,16 +2006,16 @@
                 document.getElementById("x4").style.color = "darkslategrey";
                 document.getElementById("x4").style.borderColor = "darkslategrey";
                 document.getElementById("x").style.display = "flex";
-                document.getElementById("1q").style.display = "none";
-                document.getElementById("2q").style.display = "none";
-                document.getElementById("3q").style.display = "none";
-                document.getElementById("4q").style.display = "none";
-                document.getElementById("5q").style.display = "none";
-                document.getElementById("6q").style.display = "none";
-                document.getElementById("7q").style.display = "none";
-                document.getElementById("8q").style.display = "none";
-                document.getElementById("9q").style.display = "none";
-                document.getElementById("0q").style.display = "none";
+                document.getElementById("1a").style.display = "none";
+                document.getElementById("2a").style.display = "none";
+                document.getElementById("3a").style.display = "none";
+                document.getElementById("4a").style.display = "none";
+                document.getElementById("5a").style.display = "none";
+                document.getElementById("6a").style.display = "none";
+                document.getElementById("7a").style.display = "none";
+                document.getElementById("8a").style.display = "none";
+                document.getElementById("9a").style.display = "none";
+                document.getElementById("0a").style.display = "none";
                 document.getElementById("1").style.display = "flex";
                 document.getElementById("2").style.display = "flex";
                 document.getElementById("3").style.display = "flex";
@@ -1919,8 +2244,8 @@
             }, 6000);
             setTimeout(() => {  
                 document.getElementById("contactlessSuccess").style.opacity = "1";
-                document.getElementById("gpay").style.opacity = "0";
-                document.getElementById("apay").style.opacity = "0";
+                document.getElementById("applepay").style.opacity = "0";
+                document.getElementById("googlepay").style.opacity = "0";
                 document.getElementById('confirmed').currentTime = 0;
                 document.getElementById("confirmed").play();
             }, 6150);
