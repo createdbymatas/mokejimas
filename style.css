@@ -1,0 +1,442 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    transition: 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+body{
+    background-color: black;
+    color: white;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  button{
+    touch-action: manipulation;
+  }
+  #screenSize{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 90;
+    background-color: black;
+    color: white;
+    cursor: not-allowed;
+}
+#screenSize div{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fa-mobile-screen-button{
+    font-size: 70px;
+    position: absolute;
+}
+.fa-circle-xmark{
+    font-size: 30px;
+    background-color: black;
+    box-shadow: 0 0 3px black;
+    border-radius: 100%;
+    margin-top: 60px;
+    z-index: 2;
+    margin-left: 45px;
+}
+#background{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    right: 0; 
+    top: 0;
+    bottom: 0;
+    background-color: black;
+    z-index: 99;
+    transition: 0.3s;
+    cursor: wait;
+}
+#busyBottom{
+    margin: 0;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkslategrey;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    transition: 0.3s;
+    cursor: wait;
+}
+#logo{
+    color: darkslategrey;
+    transition: 0.3s;
+    animation: blink 5s linear infinite;
+    font-weight: 400;
+    cursor: default;
+    font-size: 32px;
+}
+#zaliuDiv{
+    width: 100%;
+    height: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 10px;
+}
+#zaliuDiv div{
+    width: 25px;
+    height: 13px;
+    background-color: darkslategrey;
+    border-radius: 3px;
+    transition: none;
+}
+#screen{
+    width: 90%;
+    height: 300px;
+    margin-top: 5px;
+    border-radius: 25px;
+    background-color: darkslategrey;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+#created{
+    position: absolute;
+    font-size: 15px;
+    bottom: 15px;
+    color: black;
+    text-transform: none;
+    opacity: 0;
+}
+#created span{
+    transition: 0.3s;
+}
+#startAdvice{
+    position: absolute;
+    font-size: 15px;
+    bottom: 15px;
+    color: black;
+    text-transform: none;
+    opacity: 0;
+}
+#startAdvice i{
+    color: green;
+}
+#loading{
+    position: absolute;
+    font-size: 70px;
+    color: black;
+    opacity: 0;
+    margin-top: -30px;
+}
+#busyEN{
+    position: absolute;
+    font-size: 22px;
+    color: black;
+    opacity: 0;
+    margin-top: 90px;
+    text-transform: none;
+}
+#dirba{
+    position: absolute;
+    font-size: 22px;
+    color: black;
+    opacity: 0;
+    margin-top: 90px;
+    text-transform: none;
+}
+#ready{
+    position: absolute;
+    font-size: 30px;
+    color: black;
+    opacity: 0;
+}
+#amount{
+    position: absolute;
+    font-size: 30px;
+    color: black;
+    opacity: 0;
+}
+#amountInput{
+    user-select: none;
+    pointer-events: none;
+    border: none;
+    background-color: transparent;
+    width: 90%;
+    height: 50px;
+    color: black;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 135px;
+    opacity: 0;
+    position: absolute;
+}
+#amountCurrency{
+    position: absolute;
+    font-size: 15px;
+    bottom: 15px;
+    color: black;
+    text-transform: none;
+    opacity: 0;
+}
+#insertCard{
+    position: absolute;
+    font-size: 30px;
+    color: black;
+    opacity: 0;
+}
+#contactlessAvailable{
+    position: absolute;
+    font-size: 15px;
+    bottom: 15px;
+    color: black;
+    text-transform: none;
+    opacity: 0;
+}
+#enterPin{
+    position: absolute;
+    font-size: 30px;
+    color: black;
+    opacity: 0;
+}
+#attemptsRemaining{
+    position: absolute;
+    font-size: 15px;
+    bottom: 15px;
+    color: black;
+    text-transform: none;
+    opacity: 0;
+}
+#approved{
+    position: absolute;
+    font-size: 30px;
+    color: black;
+    opacity: 0;
+}
+#removeCard{
+    position: absolute;
+    font-size: 30px;
+    color: black;
+    opacity: 0;
+}
+#contactlessSuccess{
+    position: absolute;
+    font-size: 30px;
+    color: black;
+    opacity: 0;
+}
+#pinInput{
+    user-select: none;
+    pointer-events: none;
+    border: none;
+    background-color: transparent;
+    width: 100px;
+    height: 50px;
+    color: black;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 135px;
+    opacity: 0;
+    position: absolute;
+    padding-top: 10px;
+}
+#signal{
+    position: absolute;
+    color: black;
+    top: 15px;
+    left: 15px;
+    opacity: 0;
+    font-size: 15px;
+}
+#bank{
+    position: absolute;
+    color: black;
+    top: 15px;
+    left: 40px;
+    opacity: 0;
+    font-size: 15px;
+}
+#connectedBank{
+    position: absolute;
+    color: black;
+    top: 15px;
+    left: 60px;
+    opacity: 0;
+    font-size: 15px;
+}
+#contactless{
+    width: 15px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    opacity: 0;
+    font-size: 15px;
+}
+#applepay{
+    font-size: 25px;
+    position: absolute;
+    top: 40px;
+    right: 8px;
+    opacity: 0;
+    color: black;
+}
+#googlepay{
+    font-size: 25px;
+    position: absolute;
+    top: 65px;
+    right: 8px;
+    opacity: 0;
+    color: black;
+}
+#cloud{
+    position: absolute;
+    color: black;
+    top: 15px;
+    right: 70px;
+    opacity: 0;
+    font-size: 17px;
+}
+#fundsPending{
+    position: absolute;
+    color: black;
+    top: 16px;
+    right: 40px;
+    opacity: 0;
+    font-size: 17px;
+}
+#keyboard{
+    width: 90%;
+    height: 280px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5px;
+}
+.organiseKeyboard{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+ .number{
+    width: 100px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: black;
+    border: 2px solid darkslategrey;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: darkslategrey;
+    transition: 0.3s;
+    cursor: pointer;
+    pointer-events: none;
+}
+.number span{
+    font-size: 15px;
+    margin-left: 5px;
+    transition: 0.01s;
+}
+.number i{
+    transition: 0.01s;
+}
+.fa-voicemail{
+    font-size: 15px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.fa-plus{
+    font-size: 15px;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+#insertCardComplete{
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: none;
+}
+#removeCardComplete{
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: none;
+}
+@keyframes blink {
+    0%{
+        border-color: darkslategrey;
+        color: darkslategrey;
+    }
+    80%{
+        border-color: darkslategrey;
+        color: darkslategrey;
+    }
+    90%{
+        border-color: white;
+        color: white;
+    }
+    100%{
+        border-color: darkslategrey;
+        color: darkslategrey;
+    }
+}
+@keyframes blink2 {
+    0%{
+        border-color: white;
+        color: white;
+    }
+    80%{
+        border-color: white;
+        color: white;
+    }
+    90%{
+        border-color: darkslategrey;
+        color: darkslategrey;
+    }
+    100%{
+        border-color: white;
+        color: white;
+    }
+}
+@media only screen and (max-width: 750px){
+    #screenSize{
+        display: none;
+    }
+}
