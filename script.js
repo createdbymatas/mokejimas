@@ -365,93 +365,93 @@ function startTransaction() {
     }, 4700);
 }
 function openTransaction() {
-    document.getElementById('repeat').muted = false;
-    document.getElementById("repeat").play();
+            document.getElementById('repeat').muted = false;
+            document.getElementById("repeat").play();
 
-    document.getElementById('click').muted = false;
-    document.getElementById("click").play();
-    document.getElementById('click').currentTime = 0;
-    document.getElementById("check2").style.borderColor = "darkslategrey";
-    document.getElementById("check2").style.transition = "none";
-    document.getElementById("check2").style.pointerEvents = "none";
-    document.getElementById("1").style.pointerEvents = "none";
-    document.getElementById("2").style.pointerEvents = "none";
-    document.getElementById("3").style.pointerEvents = "none";
-    document.getElementById("4").style.pointerEvents = "none";
-    document.getElementById("5").style.pointerEvents = "none";
-    document.getElementById("6").style.pointerEvents = "none";
-    document.getElementById("7").style.pointerEvents = "none";
-    document.getElementById("8").style.pointerEvents = "none";
-    document.getElementById("9").style.pointerEvents = "none";
-    document.getElementById("0").style.pointerEvents = "none";
-    document.getElementById("x").style.display = "flex";
-    document.getElementById("x").style.pointerEvents = "none";
-    document.getElementById("x2").style.display = "none";
-    setTimeout(() => {  
-        document.getElementById("repeat").pause();
-    }, 1);
-    setTimeout(() => {  
-        document.getElementById("check2").style.borderColor = "green";
-        document.getElementById("check2").style.transition = "0.3s";
-        document.getElementById("amountCurrency").style.opacity = "0";
-        document.getElementById("amount").style.opacity = "0";
-        document.getElementById("amountInput").style.opacity = "0";
-    }, 100);
-    setTimeout(() => {  
-        document.getElementById("dirba").style.opacity = "1";
-        document.getElementById("loading").style.opacity = "1";
-        document.getElementById("1").style.color = "darkslategrey";
-        document.getElementById("1").style.borderColor = "darkslategrey";
-        document.getElementById("2").style.color = "darkslategrey";
-        document.getElementById("2").style.borderColor = "darkslategrey";
-        document.getElementById("3").style.color = "darkslategrey";
-        document.getElementById("3").style.borderColor = "darkslategrey";
-        document.getElementById("4").style.color = "darkslategrey";
-        document.getElementById("4").style.borderColor = "darkslategrey";
-        document.getElementById("5").style.color = "darkslategrey";
-        document.getElementById("5").style.borderColor = "darkslategrey";
-        document.getElementById("6").style.color = "darkslategrey";
-        document.getElementById("6").style.borderColor = "darkslategrey";
-        document.getElementById("7").style.color = "darkslategrey";
-        document.getElementById("7").style.borderColor = "darkslategrey";
-        document.getElementById("8").style.color = "darkslategrey";
-        document.getElementById("8").style.borderColor = "darkslategrey";
-        document.getElementById("9").style.color = "darkslategrey";
-        document.getElementById("9").style.borderColor = "darkslategrey";
-        document.getElementById("x").style.color = "darkslategrey";
-        document.getElementById("x").style.borderColor = "darkslategrey";
-        document.getElementById("x2").style.color = "darkslategrey";
-        document.getElementById("x2").style.borderColor = "darkslategrey";
-        document.getElementById("0").style.color = "darkslategrey";
-        document.getElementById("0").style.borderColor = "darkslategrey";
-        document.getElementById("check2").style.color = "darkslategrey";
-        document.getElementById("check2").style.borderColor = "darkslategrey";
-    }, 250);
-    setTimeout(() => {  
-        document.getElementById("dirba").style.opacity = "0";
-        document.getElementById("loading").style.opacity = "0";
-    }, 5250);
-    setTimeout(() => {  
-        document.getElementById("insertCard").style.opacity = "1";
-        document.getElementById("amountInput").style.opacity = "1";
-        document.getElementById("amountInput").value = document.getElementById("amountInput").value + ' £';
-    }, 5400);
-    setTimeout(() => {  
-        document.getElementById("x3").style.display = "flex";
-        document.getElementById("x").style.display = "none";
-    }, 6350);
-    setTimeout(() => {  
-        document.getElementById("contactlessAvailable").style.opacity = "1";
-        document.getElementById("applepay").style.opacity = "1";
-        document.getElementById("googlepay").style.opacity = "1";
-        document.getElementById("insertCardComplete").style.display = "block";
-        document.getElementById("screen").style.pointerEvents = "all";
-        document.getElementById('repeat').currentTime = 0;
-        document.getElementById("repeat").play();
-        document.getElementById("x3").style.color = "red";
-        document.getElementById("x3").style.borderColor = "red";
-    }, 6400);
-}
+            document.getElementById('click').muted = false;
+            document.getElementById("click").play();
+            document.getElementById('click').currentTime = 0;
+            document.getElementById("check2").style.borderColor = "darkslategrey";
+            document.getElementById("check2").style.transition = "none";
+            document.getElementById("check2").style.pointerEvents = "none";
+            document.getElementById("1").style.pointerEvents = "none";
+            document.getElementById("2").style.pointerEvents = "none";
+            document.getElementById("3").style.pointerEvents = "none";
+            document.getElementById("4").style.pointerEvents = "none";
+            document.getElementById("5").style.pointerEvents = "none";
+            document.getElementById("6").style.pointerEvents = "none";
+            document.getElementById("7").style.pointerEvents = "none";
+            document.getElementById("8").style.pointerEvents = "none";
+            document.getElementById("9").style.pointerEvents = "none";
+            document.getElementById("0").style.pointerEvents = "none";
+            document.getElementById("x").style.display = "flex";
+            document.getElementById("x").style.pointerEvents = "none";
+            document.getElementById("x2").style.display = "none";
+            setTimeout(() => {  
+                document.getElementById("repeat").pause();
+            }, 1);
+            setTimeout(() => {  
+                document.getElementById("check2").style.borderColor = "green";
+                document.getElementById("check2").style.transition = "0.3s";
+                document.getElementById("amountCurrency").style.opacity = "0";
+                document.getElementById("amount").style.opacity = "0";
+                document.getElementById("amountInput").style.opacity = "0";
+            }, 100);
+            setTimeout(() => {  
+                document.getElementById("dirba").style.opacity = "1";
+                document.getElementById("loading").style.opacity = "1";
+                document.getElementById("1").style.color = "darkslategrey";
+                document.getElementById("1").style.borderColor = "darkslategrey";
+                document.getElementById("2").style.color = "darkslategrey";
+                document.getElementById("2").style.borderColor = "darkslategrey";
+                document.getElementById("3").style.color = "darkslategrey";
+                document.getElementById("3").style.borderColor = "darkslategrey";
+                document.getElementById("4").style.color = "darkslategrey";
+                document.getElementById("4").style.borderColor = "darkslategrey";
+                document.getElementById("5").style.color = "darkslategrey";
+                document.getElementById("5").style.borderColor = "darkslategrey";
+                document.getElementById("6").style.color = "darkslategrey";
+                document.getElementById("6").style.borderColor = "darkslategrey";
+                document.getElementById("7").style.color = "darkslategrey";
+                document.getElementById("7").style.borderColor = "darkslategrey";
+                document.getElementById("8").style.color = "darkslategrey";
+                document.getElementById("8").style.borderColor = "darkslategrey";
+                document.getElementById("9").style.color = "darkslategrey";
+                document.getElementById("9").style.borderColor = "darkslategrey";
+                document.getElementById("x").style.color = "darkslategrey";
+                document.getElementById("x").style.borderColor = "darkslategrey";
+                document.getElementById("x2").style.color = "darkslategrey";
+                document.getElementById("x2").style.borderColor = "darkslategrey";
+                document.getElementById("0").style.color = "darkslategrey";
+                document.getElementById("0").style.borderColor = "darkslategrey";
+                document.getElementById("check2").style.color = "darkslategrey";
+                document.getElementById("check2").style.borderColor = "darkslategrey";
+            }, 250);
+            setTimeout(() => {  
+                document.getElementById("dirba").style.opacity = "0";
+                document.getElementById("loading").style.opacity = "0";
+            }, 5250);
+            setTimeout(() => {  
+                document.getElementById("insertCard").style.opacity = "1";
+                document.getElementById("amountInput").style.opacity = "1";
+                document.getElementById("amountInput").value = document.getElementById("amountInput").value + document.getElementById("spanCurrency").innerHTML;
+            }, 5400);
+            setTimeout(() => {  
+                document.getElementById("x3").style.display = "flex";
+                document.getElementById("x").style.display = "none";
+            }, 6350);
+            setTimeout(() => {  
+                document.getElementById("contactlessAvailable").style.opacity = "1";
+                document.getElementById("applepay").style.opacity = "1";
+                document.getElementById("googlepay").style.opacity = "1";
+                document.getElementById("insertCardComplete").style.display = "block";
+                document.getElementById("screen").style.pointerEvents = "all";
+                document.getElementById('repeat').currentTime = 0;
+                document.getElementById("repeat").play();
+                document.getElementById("x3").style.color = "red";
+                document.getElementById("x3").style.borderColor = "red";
+            }, 6400);
+        }
 let audio = document.getElementById("repeat");
 audio.onended = function() {
     setTimeout(() => {  
