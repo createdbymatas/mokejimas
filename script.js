@@ -389,7 +389,7 @@ function openTransaction() {
             document.getElementById("x2").style.display = "none";
             setTimeout(() => {  
                 document.getElementById("repeat").pause();
-            }, 1);
+            }, 2);
             setTimeout(() => {  
                 document.getElementById("check2").style.borderColor = "green";
                 document.getElementById("check2").style.transition = "0.3s";
@@ -1394,7 +1394,7 @@ function baigtiMokejima() {
     setTimeout(() => {  
         document.getElementById("repeat").pause();
         document.getElementById("confirmed").pause();
-    }, 1);
+    }, 2);
     setTimeout(() => {  
         document.getElementById("check3").style.borderColor = "green";
         document.getElementById("check3").style.transition = "0.3s";
