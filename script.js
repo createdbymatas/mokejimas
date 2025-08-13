@@ -239,6 +239,20 @@ function run() {
         document.getElementById("check").style.color = "green";
         document.getElementById("check").style.borderColor = "green";
     }, 15000);
+    setTimeout(() => {
+        setInterval(function() {
+            document.getElementById("cloud").style.opacity = "1";
+            setTimeout(() => {  
+                document.getElementById("cloud").style.opacity = "0";
+            }, 1000);
+            setTimeout(() => {  
+                document.getElementById("cloud").style.opacity = "1";
+            }, 2000);
+            setTimeout(() => {
+                document.getElementById("cloud").style.opacity = "0";
+            }, 3000);
+        }, 20 * 1000);
+    }, 16000);
 }
 
 
@@ -1343,7 +1357,7 @@ function baigtiMokejima() {
     document.getElementById("check3").style.transition = "none";
     document.getElementById("check3").style.pointerEvents = "none";
     document.getElementById("x5").style.pointerEvents = "none";
-    setTimeout(() => {  
+    setTimeout(() => {
         document.getElementById("repeat").pause();
         document.getElementById("confirmed").pause();
     }, 2);
@@ -1434,13 +1448,13 @@ function baigtiMokejima() {
     }, 11000);
     setTimeout(() => {
         document.getElementById("approved").style.opacity = "0";
-    }, 16250);
+    }, 14250);
     setTimeout(() => {
         document.getElementById("removeCard").style.opacity = "1";
         document.getElementById('repeat').currentTime = 0;
         document.getElementById("repeat").play();
         document.getElementById("removeCardComplete").style.display = "block";
-    }, 16400);
+    }, 14400);
 }
 function cardRemoved() {
     document.getElementById("removeCardComplete").style.display = "none";
@@ -1488,10 +1502,10 @@ function cardRemoved() {
     }, 10250);
     setTimeout(() => {  
         document.getElementById("fundsPending").style.opacity = "0";
-    }, 15250);
+    }, 13250);
     setTimeout(() => {  
         document.getElementById("fundsPending").style.color = "black";
-    }, 15400);
+    }, 13400);
 }
 function contactless() {
     document.getElementById('confirmed').muted = false;
@@ -1655,25 +1669,25 @@ function contactless() {
     }, 6150);
     setTimeout(() => {  
         document.getElementById("contactlessSuccess").style.opacity = "0";
-    }, 11150);
+    }, 9150);
     setTimeout(() => {  
         document.getElementById("ready").style.opacity = "1";
         document.getElementById("fundsPending").style.opacity = "1";
         document.getElementById("fundsPending").style.color = "orange";
-    }, 11300);
+    }, 9300);
     setTimeout(() => {  
         document.getElementById("startAdvice").style.opacity = "1";
         document.getElementById("check").style.color = "green";
         document.getElementById("check").style.borderColor = "green";
         document.getElementById("check").style.pointerEvents = "all";
-    }, 12300);
+    }, 10300);
     setTimeout(() => {  
         document.getElementById("fundsPending").style.color = "green";
-    }, 20300);
+    }, 18300);
     setTimeout(() => {  
         document.getElementById("fundsPending").style.opacity = "0";
-    }, 25300);
+    }, 21300);
     setTimeout(() => {  
         document.getElementById("fundsPending").style.color = "black";
-    }, 25750);
+    }, 21750);
 }
