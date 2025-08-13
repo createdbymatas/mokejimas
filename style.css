@@ -286,7 +286,7 @@ body{
 #connectedBank{
     position: absolute;
     color: black;
-    top: 15px;
+    top: 13px;
     left: 60px;
     opacity: 0;
     font-size: 15px;
