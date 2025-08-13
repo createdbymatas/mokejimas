@@ -1,5 +1,5 @@
 // Disable right-click
-document.addEventListener('contextmenu', (e) => e.preventDefault());
+// document.addEventListener('contextmenu', (e) => e.preventDefault());
 
 function ctrlShiftKey(e, keyCode) {
     return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
@@ -182,111 +182,63 @@ function run() {
     }, 5300);
     setTimeout(() => {  
         document.getElementById("signal").style.opacity = "1";
-    }, 10000);
+    }, 7000);
     setTimeout(() => {  
         document.getElementById("signal").style.opacity = "0";
-    }, 10500);
+    }, 7500);
     setTimeout(() => {  
         document.getElementById("signal").style.opacity = "1";
-    }, 11000);
+    }, 8000);
     setTimeout(() => {  
         document.getElementById("signal").style.opacity = "0";
-    }, 11500);
-    setTimeout(() => {  
-        document.getElementById("signal").style.opacity = "1";
-    }, 12000);
-    setTimeout(() => {  
-        document.getElementById("signal").style.opacity = "0";
-    }, 12500);
-    setTimeout(() => {  
-        document.getElementById("signal").style.opacity = "1";
-    }, 13000);
-    setTimeout(() => {  
-        document.getElementById("signal").style.opacity = "0";
-    }, 13500);
-    setTimeout(() => {  
-        document.getElementById("signal").style.opacity = "1";
-    }, 14000);
-    setTimeout(() => {  
-        document.getElementById("signal").style.opacity = "0";
-    }, 14500);
+    }, 8500);
     setTimeout(() => {  
         document.getElementById("signal").style.opacity = "1";
         document.getElementById("signal").style.color = "green";
         document.getElementById("bank").style.opacity = "1";
-    }, 15000);
+    }, 9000);
     setTimeout(() => {  
         document.getElementById("bank").style.opacity = "0";
-    }, 15500);
+    }, 9500);
     setTimeout(() => {  
         document.getElementById("bank").style.opacity = "1";
-    }, 16000);
+    }, 10000);
     setTimeout(() => {  
         document.getElementById("bank").style.opacity = "0";
-    }, 16500);
-    setTimeout(() => {  
-        document.getElementById("bank").style.opacity = "1";
-    }, 17000);
-    setTimeout(() => {  
-        document.getElementById("bank").style.opacity = "0";
-    }, 17500);
-    setTimeout(() => {  
-        document.getElementById("bank").style.opacity = "1";
-    }, 18000);
-    setTimeout(() => {  
-        document.getElementById("bank").style.opacity = "0";
-    }, 18500);
-    setTimeout(() => {  
-        document.getElementById("bank").style.opacity = "1";
-    }, 19000);
-    setTimeout(() => {  
-        document.getElementById("bank").style.opacity = "0";
-    }, 19500);
+    }, 10500);
     setTimeout(() => {  
         document.getElementById("busyEN").style.opacity = "0";
-    }, 19925);
+    }, 10925);
     setTimeout(() => {  
         document.getElementById("bank").style.opacity = "1";
         document.getElementById("connectedBank").style.opacity = "1";
         document.getElementById("bank").style.color = "green";
         document.getElementById("cloud").style.opacity = "1";
-    }, 20000);
+    }, 11000);
     setTimeout(() => {  
         document.getElementById("dirba").style.opacity = "1";
-    }, 20075);
+    }, 11075);
     setTimeout(() => {  
         document.getElementById("cloud").style.opacity = "0";
-    }, 21000);
+    }, 12000);
     setTimeout(() => {  
         document.getElementById("cloud").style.opacity = "1";
-    }, 22000);
-    setTimeout(() => {  
-        document.getElementById("cloud").style.opacity = "0";
-    }, 23000);
-    setTimeout(() => {  
-        document.getElementById("cloud").style.opacity = "1";
-    }, 24000);
-    setTimeout(() => {  
-        document.getElementById("cloud").style.opacity = "0";
-    }, 25000);
-    setTimeout(() => {  
-        document.getElementById("cloud").style.opacity = "1";
-    }, 26000);
+    }, 13000);
     setTimeout(() => {  
         document.getElementById("dirba").style.opacity = "0";
         document.getElementById("loading").style.opacity = "0";
-    }, 26850);
+    }, 13850);
     setTimeout(() => {
         document.getElementById("ready").style.opacity = "1";
         document.getElementById("cloud").style.opacity = "0";
         document.getElementById("contactless").style.opacity = "1";
-    }, 27000);
+    }, 14000);
     setTimeout(() => {
         document.getElementById("startAdvice").style.opacity = "1";
         document.getElementById("check").style.pointerEvents = "all";
         document.getElementById("check").style.color = "green";
         document.getElementById("check").style.borderColor = "green";
-    }, 28000);
+    }, 15000);
 }
 
 
