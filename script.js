@@ -1666,14 +1666,14 @@ function contactless() {
         document.getElementById("check").style.color = "green";
         document.getElementById("check").style.borderColor = "green";
         document.getElementById("check").style.pointerEvents = "all";
-    }, 13300);
+    }, 12300);
     setTimeout(() => {  
         document.getElementById("fundsPending").style.color = "green";
-    }, 21300);
+    }, 20300);
     setTimeout(() => {  
         document.getElementById("fundsPending").style.opacity = "0";
-    }, 26300);
+    }, 25300);
     setTimeout(() => {  
         document.getElementById("fundsPending").style.color = "black";
-    }, 26750);
+    }, 25750);
 }
