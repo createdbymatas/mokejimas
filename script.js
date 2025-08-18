@@ -26,6 +26,11 @@ function loadFunction() {
     }, 1300);
 }
 function run() {
+    document.getElementById('startup').muted = false;
+    document.getElementById("startup").play();
+    setTimeout(() => {
+        document.getElementById("startup").pause();
+    }, 2);
     document.getElementById("logo").style.pointerEvents = "none";
     document.getElementById("logo").style.animation = "none";
     setTimeout(() => {  
@@ -62,6 +67,7 @@ function run() {
     }, 1200);
     setTimeout(() => {  
         document.getElementById("screen").style.backgroundColor = "white";
+        document.getElementById("startup").play();
     }, 1500);
     setTimeout(() => {  
         document.getElementById("zalias1").style.backgroundColor = "yellowgreen";
